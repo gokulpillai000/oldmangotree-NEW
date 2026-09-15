@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
+import matter from 'gray-matter';
 import { getCurrentSession } from '@/lib/auth';
 import { determineCategoryFromTags } from '@/lib/categoryMapper';
-import { getAllArticles } from '@/lib/content';
+import { getAllArticles, getArticleBySlug } from '@/lib/content';
 
 function htmlToMarkdown(htmlContent: string): string {
   if (!htmlContent) return '';
@@ -27,17 +28,23 @@ function htmlToMarkdown(htmlContent: string): string {
   return md.trim();
 }
 
+// ================= POST: Create New Article =================
 export async function POST(req: NextRequest) {
   try {
-    // Check authorization: Session cookie OR Bearer API token
     const session = getCurrentSession(req);
     const authHeader = req.headers.get('authorization');
-    const isAppsScriptAuth = authHeader && (authHeader.startsWith('Bearer ') || authHeader.includes('omt_publish_token'));
+    const isAppsScriptAuth = authHeader && (authHeader.includes('omt_publish_token'));
 
     if (!session && !isAppsScriptAuth) {
       return NextResponse.json(
         { error: 'Please sign in to publish articles.' },
         { status: 401 }
+      );
+    }
+    if (session && session.role !== 'publisher') {
+      return NextResponse.json(
+        { error: 'Access denied: Editorial staff privileges required.' },
+        { status: 403 }
       );
     }
 
@@ -65,8 +72,6 @@ export async function POST(req: NextRequest) {
     }
 
     const parsedTags = Array.isArray(tags) ? tags : String(tags).split(',').map((t) => t.trim());
-    
-    // Auto-derive category from tags if not explicitly provided
     const category = explicitCategory || determineCategoryFromTags(parsedTags);
 
     let slug = (customSlug || title)
@@ -85,7 +90,6 @@ export async function POST(req: NextRequest) {
     const publishedAt = inputPublishedAt || new Date().toISOString();
     const finalBodyMarkdown = markdownContent || htmlToMarkdown(htmlContent || '');
 
-    // Format Frontmatter + Content
     const frontmatterObj = {
       title,
       slug,
@@ -115,7 +119,6 @@ export async function POST(req: NextRequest) {
 
     const fullArticleMarkdown = `---\n${yamlFrontmatter}\n---\n\n# ${title}\n\n${finalBodyMarkdown}\n`;
 
-    // Save article file
     const articlesDir = path.join(process.cwd(), 'content', 'articles');
     if (!fs.existsSync(articlesDir)) {
       fs.mkdirSync(articlesDir, { recursive: true });
@@ -125,7 +128,6 @@ export async function POST(req: NextRequest) {
     const filePath = path.join(articlesDir, fileName);
     fs.writeFileSync(filePath, fullArticleMarkdown, 'utf8');
 
-    // Link Webzine Issue Packet if assigned
     if (webzineIssue) {
       const issuePath = path.join(process.cwd(), 'content', 'issues', `${webzineIssue}.json`);
       if (fs.existsSync(issuePath)) {
@@ -157,19 +159,225 @@ export async function POST(req: NextRequest) {
   }
 }
 
+// ================= PUT: Edit Existing Article =================
+export async function PUT(req: NextRequest) {
+  try {
+    const session = getCurrentSession(req);
+    if (!session) {
+      return NextResponse.json({ error: 'Please sign in to edit articles.' }, { status: 401 });
+    }
+    if (session.role !== 'publisher') {
+      return NextResponse.json({ error: 'Access denied: Editorial staff privileges required.' }, { status: 403 });
+    }
+
+    const body = await req.json();
+    const {
+      slug,
+      title,
+      excerpt,
+      category: explicitCategory,
+      authors = ['kamalram-sajeev'],
+      publishedAt,
+      coverImage,
+      audioNarrationUrl,
+      audioDurationSeconds,
+      isPremium,
+      webzineIssue,
+      readTimeMinutes,
+      tags,
+      markdownContent,
+    } = body;
+
+    if (!slug) {
+      return NextResponse.json({ error: 'Article slug is required for updating.' }, { status: 400 });
+    }
+
+    const articlesDir = path.join(process.cwd(), 'content', 'articles');
+    const filePath = path.join(articlesDir, `${slug}.md`);
+
+    if (!fs.existsSync(filePath)) {
+      return NextResponse.json({ error: 'Article file not found.' }, { status: 404 });
+    }
+
+    // Read existing file to retain fields if omitted
+    const existingFile = fs.readFileSync(filePath, 'utf8');
+    const parsed = matter(existingFile);
+
+    const parsedTags = tags
+      ? (Array.isArray(tags) ? tags : String(tags).split(',').map((t) => t.trim()))
+      : parsed.data.tags || [];
+
+    const category = explicitCategory || determineCategoryFromTags(parsedTags) || parsed.data.category;
+
+    const frontmatterObj = {
+      ...parsed.data,
+      title: title || parsed.data.title,
+      slug,
+      excerpt: excerpt !== undefined ? excerpt : parsed.data.excerpt,
+      category,
+      authors: authors ? (Array.isArray(authors) ? authors : [authors]) : parsed.data.authors,
+      publishedAt: publishedAt || parsed.data.publishedAt,
+      coverImage: coverImage || parsed.data.coverImage,
+      audioNarrationUrl: audioNarrationUrl !== undefined ? audioNarrationUrl : parsed.data.audioNarrationUrl,
+      audioDurationSeconds: audioDurationSeconds !== undefined ? Number(audioDurationSeconds) : parsed.data.audioDurationSeconds,
+      isPremium: isPremium !== undefined ? Boolean(isPremium) : parsed.data.isPremium,
+      webzineIssue: webzineIssue !== undefined ? webzineIssue : parsed.data.webzineIssue,
+      readTimeMinutes: readTimeMinutes !== undefined ? Number(readTimeMinutes) : parsed.data.readTimeMinutes,
+      tags: parsedTags,
+    };
+
+    const yamlFrontmatter = Object.entries(frontmatterObj)
+      .map(([key, val]) => {
+        if (val === undefined) return null;
+        if (Array.isArray(val)) {
+          return `${key}:\n` + val.map((v) => `  - "${v}"`).join('\n');
+        }
+        if (typeof val === 'string') {
+          return `${key}: "${val.replace(/"/g, '\\"')}"`;
+        }
+        return `${key}: ${val}`;
+      })
+      .filter(Boolean)
+      .join('\n');
+
+    const bodyContent = markdownContent !== undefined ? markdownContent : parsed.content;
+    const fullArticleMarkdown = `---\n${yamlFrontmatter}\n---\n\n${bodyContent.trim()}\n`;
+
+    fs.writeFileSync(filePath, fullArticleMarkdown, 'utf8');
+
+    // Update Issue Packet links if changed
+    if (webzineIssue && webzineIssue !== parsed.data.webzineIssue) {
+      // Remove from old issue
+      if (parsed.data.webzineIssue) {
+        const oldPath = path.join(process.cwd(), 'content', 'issues', `${parsed.data.webzineIssue}.json`);
+        if (fs.existsSync(oldPath)) {
+          const oldData = JSON.parse(fs.readFileSync(oldPath, 'utf8'));
+          oldData.articleSlugs = (oldData.articleSlugs || []).filter((s: string) => s !== slug);
+          fs.writeFileSync(oldPath, JSON.stringify(oldData, null, 2), 'utf8');
+        }
+      }
+      // Add to new issue
+      const newPath = path.join(process.cwd(), 'content', 'issues', `${webzineIssue}.json`);
+      if (fs.existsSync(newPath)) {
+        const newData = JSON.parse(fs.readFileSync(newPath, 'utf8'));
+        if (!newData.articleSlugs.includes(slug)) {
+          newData.articleSlugs.push(slug);
+          fs.writeFileSync(newPath, JSON.stringify(newData, null, 2), 'utf8');
+        }
+      }
+    }
+
+    return NextResponse.json({
+      success: true,
+      message: 'Article updated successfully!',
+      article: frontmatterObj,
+    });
+  } catch (err: any) {
+    return NextResponse.json({ error: 'Failed to update article: ' + err.message }, { status: 500 });
+  }
+}
+
+// ================= DELETE: Delete Article =================
+export async function DELETE(req: NextRequest) {
+  try {
+    const session = getCurrentSession(req);
+    if (!session) {
+      return NextResponse.json({ error: 'Please sign in to delete articles.' }, { status: 401 });
+    }
+    if (session.role !== 'publisher') {
+      return NextResponse.json({ error: 'Access denied: Editorial staff privileges required.' }, { status: 403 });
+    }
+
+    const { searchParams } = new URL(req.url);
+    const slug = searchParams.get('slug');
+
+    if (!slug) {
+      return NextResponse.json({ error: 'Article slug parameter is required.' }, { status: 400 });
+    }
+
+    const articlesDir = path.join(process.cwd(), 'content', 'articles');
+    const filePath = path.join(articlesDir, `${slug}.md`);
+
+    if (!fs.existsSync(filePath)) {
+      return NextResponse.json({ error: 'Article not found.' }, { status: 404 });
+    }
+
+    fs.unlinkSync(filePath);
+
+    // Remove from any issue packets
+    const issuesDir = path.join(process.cwd(), 'content', 'issues');
+    if (fs.existsSync(issuesDir)) {
+      const issueFiles = fs.readdirSync(issuesDir).filter((f) => f.endsWith('.json'));
+      for (const file of issueFiles) {
+        const issuePath = path.join(issuesDir, file);
+        const data = JSON.parse(fs.readFileSync(issuePath, 'utf8'));
+        if (data.articleSlugs && data.articleSlugs.includes(slug)) {
+          data.articleSlugs = data.articleSlugs.filter((s: string) => s !== slug);
+          fs.writeFileSync(issuePath, JSON.stringify(data, null, 2), 'utf8');
+        }
+      }
+    }
+
+    return NextResponse.json({
+      success: true,
+      message: `Article ${slug} deleted successfully.`,
+    });
+  } catch (err: any) {
+    return NextResponse.json({ error: 'Failed to delete article: ' + err.message }, { status: 500 });
+  }
+}
+
+// ================= GET: Fetch Articles Catalog or Single Article =================
 export async function GET(req: NextRequest) {
   try {
     const session = getCurrentSession(req);
     if (!session) {
       return NextResponse.json(
-        { error: 'Please sign in to view published articles.' },
+        { error: 'Please sign in to view editorial data.' },
         {
           status: 401,
           headers: { 'Cache-Control': 'no-store, no-cache, must-revalidate' },
         }
       );
     }
+    if (session.role !== 'publisher') {
+      return NextResponse.json(
+        { error: 'Access denied: Editorial staff privileges required.' },
+        {
+          status: 403,
+          headers: { 'Cache-Control': 'no-store, no-cache, must-revalidate' },
+        }
+      );
+    }
 
+    const { searchParams } = new URL(req.url);
+    const slug = searchParams.get('slug');
+
+    // Return single article source for editing
+    if (slug) {
+      const articlesDir = path.join(process.cwd(), 'content', 'articles');
+      const filePath = path.join(articlesDir, `${slug}.md`);
+      if (!fs.existsSync(filePath)) {
+        return NextResponse.json({ error: 'Article not found' }, { status: 404 });
+      }
+
+      const raw = fs.readFileSync(filePath, 'utf8');
+      const parsed = matter(raw);
+
+      return NextResponse.json(
+        {
+          article: {
+            ...parsed.data,
+            markdownContent: parsed.content.trim(),
+          },
+        },
+        {
+          headers: { 'Cache-Control': 'no-store, no-cache, must-revalidate' },
+        }
+      );
+    }
+
+    // Return all articles catalog
     const articles = getAllArticles(true);
     return NextResponse.json(
       { articles },

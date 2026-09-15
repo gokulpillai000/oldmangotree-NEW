@@ -146,6 +146,17 @@ export default async function CategoryArticlePage({ params }: CategoryArticlePag
           />
         </div>
 
+        {/* Top Social Sharing Bar */}
+        <SocialShareBar
+          title={article.title}
+          slug={article.slug}
+          category={article.category}
+          excerpt={article.excerpt}
+          authorNames={article.authorNames || authorObj?.name}
+          coverImage={article.coverImage}
+          publishedAt={article.publishedAt}
+        />
+
         {/* Paywall Banner for Premium Articles */}
         {article.isPremium ? <Paywall articleTitle={article.title} /> : null}
 
@@ -159,7 +170,15 @@ export default async function CategoryArticlePage({ params }: CategoryArticlePag
         />
 
         {/* Bottom Social Sharing Bar */}
-        <SocialShareBar title={article.title} slug={article.slug} />
+        <SocialShareBar
+          title={article.title}
+          slug={article.slug}
+          category={article.category}
+          excerpt={article.excerpt}
+          authorNames={article.authorNames || authorObj?.name}
+          coverImage={article.coverImage}
+          publishedAt={article.publishedAt}
+        />
 
         {/* Author Bio Card */}
         <AuthorBioCard author={authorObj} authorNameFallback={article.authors?.[0]} />

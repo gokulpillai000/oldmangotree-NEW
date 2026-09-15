@@ -12,8 +12,9 @@ export interface UserSession {
 const COOKIE_NAME = 'omt_auth_session';
 const USERS_FILE_PATH = path.join(process.cwd(), 'content', 'users.json');
 
-// Default editorial publisher accounts
+// Default editorial publisher & subscriber accounts
 const DEFAULT_USERS: Record<string, { name: string; passwordHash: string; role: 'publisher' | 'reader' }> = {
+  // Staff / Editorial Publishers
   'editor@oldmangotree.media': {
     name: 'Kamalram Sajeev',
     passwordHash: 'editor123',
@@ -38,6 +39,17 @@ const DEFAULT_USERS: Record<string, { name: string; passwordHash: string; role: 
     name: 'Publisher Admin',
     passwordHash: 'admin123',
     role: 'publisher',
+  },
+  // Readers / Subscribers
+  'reader@oldmangotree.media': {
+    name: 'Ananya Nair',
+    passwordHash: 'reader123',
+    role: 'reader',
+  },
+  'subscriber@oldmangotree.media': {
+    name: 'Rahul Menon',
+    passwordHash: 'subscriber123',
+    role: 'reader',
   },
 };
 
@@ -71,7 +83,12 @@ function saveUsers(): void {
 // Initial load
 loadUsers();
 
-export function registerUser(email: string, pass: string, name?: string): UserSession | { error: string } {
+export function registerUser(
+  email: string,
+  pass: string,
+  name?: string,
+  requestedRole: 'publisher' | 'reader' = 'reader'
+): UserSession | { error: string } {
   loadUsers();
   const cleanEmail = email.toLowerCase().trim();
   if (!cleanEmail || !cleanEmail.includes('@')) {
@@ -81,13 +98,20 @@ export function registerUser(email: string, pass: string, name?: string): UserSe
     return { error: 'Password must be at least 3 characters long.' };
   }
 
+  const isStaffDomain =
+    cleanEmail.endsWith('@oldmangotree.media') ||
+    cleanEmail.endsWith('@oldmangotree.com') ||
+    cleanEmail === 'gokulpillai000@gmail.com';
+  const role: 'publisher' | 'reader' =
+    isStaffDomain || requestedRole === 'publisher' ? 'publisher' : 'reader';
+
   const displayName = name && name.trim() ? name.trim() : cleanEmail.split('@')[0];
   const capitalizedName = displayName.charAt(0).toUpperCase() + displayName.slice(1);
 
   userStore[cleanEmail] = {
     name: capitalizedName,
     passwordHash: pass,
-    role: 'publisher',
+    role,
   };
 
   saveUsers();
@@ -95,7 +119,7 @@ export function registerUser(email: string, pass: string, name?: string): UserSe
   return {
     email: cleanEmail,
     name: capitalizedName,
-    role: 'publisher',
+    role,
     authenticatedAt: new Date().toISOString(),
   };
 }
@@ -106,7 +130,7 @@ export function authenticateUser(email: string, pass: string): UserSession | { e
   const account = userStore[cleanEmail];
 
   if (!account) {
-    // Auto-register new publisher accounts seamlessly on sign in if valid
+    // Auto-register new accounts seamlessly on sign in if valid
     return registerUser(cleanEmail, pass);
   }
 

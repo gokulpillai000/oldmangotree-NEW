@@ -23,13 +23,54 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
   return (
     <html lang="en" className="scroll-smooth">
       <head>
         <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
-        <link rel="preload" href="/fonts/DzainTrueCopy-Regular.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/DzainTrueCopy-Bold.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href={`${basePath}/fonts/DzainTrueCopy-Regular.woff2`} as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href={`${basePath}/fonts/DzainTrueCopy-Bold.woff2`} as="font" type="font/woff2" crossOrigin="anonymous" />
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            @font-face {
+              font-family: 'DzainTrueCopy';
+              src: url('${basePath}/fonts/DzainTrueCopy-Light.woff2') format('woff2');
+              font-weight: 300;
+              font-style: normal;
+              font-display: swap;
+            }
+            @font-face {
+              font-family: 'DzainTrueCopy';
+              src: url('${basePath}/fonts/DzainTrueCopy-Regular.woff2') format('woff2');
+              font-weight: 400;
+              font-style: normal;
+              font-display: swap;
+            }
+            @font-face {
+              font-family: 'DzainTrueCopy';
+              src: url('${basePath}/fonts/DzainTrueCopy-Bold.woff2') format('woff2');
+              font-weight: 700;
+              font-style: normal;
+              font-display: swap;
+            }
+            @font-face {
+              font-family: 'Dzain-TrueCopy Text';
+              src: url('${basePath}/fonts/DzainTrueCopy-Text.woff2') format('woff2');
+              font-weight: 400;
+              font-style: normal;
+              font-display: swap;
+            }
+            @font-face {
+              font-family: 'DzainTrueCopy Inline';
+              src: url('${basePath}/fonts/DzainTrueCopy-Inline.woff2') format('woff2');
+              font-weight: 300;
+              font-style: normal;
+              font-display: swap;
+            }
+          `
+        }} />
       </head>
       <body className="antialiased">
         <AudioProvider>
@@ -91,6 +132,15 @@ export default function RootLayout({
                       <Link href="/pages/privacy-policy" className="hover:text-brand-600 transition-colors">Privacy Policy (സ്വകാര്യതാ നയം)</Link>
                       <Link href="/pages/terms-of-use" className="hover:text-brand-600 transition-colors">Terms of Use (ഉപയോഗ നിബന്ധനകൾ)</Link>
                       <Link href="/pages/refund-policy" className="hover:text-brand-600 transition-colors">Refund Policy (റീഫണ്ട് നയം)</Link>
+                      <div className="pt-2 border-t border-neutral-100 dark:border-neutral-800 flex items-center gap-3">
+                        <Link href="/member" className="font-semibold text-brand-600 hover:underline">
+                          Member Space (ലൗഞ്ച്)
+                        </Link>
+                        <span>•</span>
+                        <Link href="/publisher" className="font-semibold text-neutral-500 hover:text-brand-600 hover:underline">
+                          Editorial Desk (ഡെസ്ക്)
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </div>

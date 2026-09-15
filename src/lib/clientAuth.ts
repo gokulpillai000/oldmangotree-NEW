@@ -36,9 +36,25 @@ export const STATIC_AUTH_ACCOUNTS: Record<string, { name: string; passwordHash: 
     passwordHash: 'admin123',
     role: 'publisher',
   },
+  // Readers / Subscribers
+  'reader@oldmangotree.media': {
+    name: 'Ananya Nair',
+    passwordHash: 'reader123',
+    role: 'reader',
+  },
+  'subscriber@oldmangotree.media': {
+    name: 'Rahul Menon',
+    passwordHash: 'subscriber123',
+    role: 'reader',
+  },
 };
 
-export function clientAuthenticate(email: string, pass: string, name?: string): UserSession | { error: string } {
+export function clientAuthenticate(
+  email: string,
+  pass: string,
+  name?: string,
+  requestedRole: 'publisher' | 'reader' = 'reader'
+): UserSession | { error: string } {
   const cleanEmail = email.toLowerCase().trim();
   if (!cleanEmail || !cleanEmail.includes('@')) {
     return { error: 'Please enter a valid email address.' };
@@ -49,7 +65,9 @@ export function clientAuthenticate(email: string, pass: string, name?: string): 
 
   const account = STATIC_AUTH_ACCOUNTS[cleanEmail];
   if (account) {
-    const isMatch = account.passwordHash === pass || account.passwordHash.toLowerCase() === pass.toLowerCase();
+    const isMatch =
+      account.passwordHash === pass ||
+      account.passwordHash.toLowerCase() === pass.toLowerCase();
     if (!isMatch) {
       if (cleanEmail === 'gokulpillai000@gmail.com' && (pass === 'editor123' || pass === 'gokul123')) {
         // match
@@ -65,13 +83,19 @@ export function clientAuthenticate(email: string, pass: string, name?: string): 
     };
   }
 
-  // Auto-register any new email as publisher
+  const isStaffDomain =
+    cleanEmail.endsWith('@oldmangotree.media') ||
+    cleanEmail.endsWith('@oldmangotree.com') ||
+    cleanEmail === 'gokulpillai000@gmail.com';
+  const role: 'publisher' | 'reader' =
+    isStaffDomain || requestedRole === 'publisher' ? 'publisher' : 'reader';
+
   const displayName = name && name.trim() ? name.trim() : cleanEmail.split('@')[0];
   const capitalizedName = displayName.charAt(0).toUpperCase() + displayName.slice(1);
   return {
     email: cleanEmail,
     name: capitalizedName,
-    role: 'publisher',
+    role,
     authenticatedAt: new Date().toISOString(),
   };
 }

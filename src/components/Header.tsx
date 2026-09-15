@@ -3,14 +3,18 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Search, Moon, Sun, Menu, X, BookOpen, Radio, TrendingUp, User, PenTool, Film, LogOut } from 'lucide-react';
+import { Search, Moon, Sun, Menu, X, BookOpen, Radio, TrendingUp, User, PenTool, Film, LogOut, Bookmark, Sparkles } from 'lucide-react';
 import { AuthModal } from './AuthModal';
+import { MyLibraryModal } from './MyLibraryModal';
 import { getStoredSession, setStoredSession, getAuthHeaders } from '@/lib/clientAuth';
+import { getBookmarks } from '@/lib/readerStore';
 
 export function Header() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isAuthOpen, setIsAuthOpen] = useState(false);
+  const [isLibraryOpen, setIsLibraryOpen] = useState(false);
+  const [bookmarkCount, setBookmarkCount] = useState(0);
   const [session, setSession] = useState<any>(null);
   const pathname = usePathname();
 
@@ -49,15 +53,26 @@ export function Header() {
 
     syncServerAuth();
 
-    // Listen for custom auth events across components
+    // 3. Reader bookmarks count
+    const updateBookmarks = () => {
+      setBookmarkCount(getBookmarks().length);
+    };
+    updateBookmarks();
+
+    // Listen for custom auth, open auth modal, and reader events across components
     const handleAuthChanged = () => {
       const updated = getStoredSession();
       setSession(updated);
     };
+    const handleOpenAuth = () => setIsAuthOpen(true);
 
     window.addEventListener('omt-auth-changed', handleAuthChanged);
+    window.addEventListener('omt-open-auth', handleOpenAuth);
+    window.addEventListener('omt-reader-updated', updateBookmarks);
     return () => {
       window.removeEventListener('omt-auth-changed', handleAuthChanged);
+      window.removeEventListener('omt-open-auth', handleOpenAuth);
+      window.removeEventListener('omt-reader-updated', updateBookmarks);
     };
   }, []);
 
@@ -238,7 +253,7 @@ export function Header() {
                 Latest
               </Link>
 
-              {session && (
+              {session?.role === 'publisher' && (
                 <Link
                   href="/publisher"
                   className="flex items-center gap-1.5 text-xs font-bold text-neutral-800 dark:text-neutral-200 bg-neutral-100 dark:bg-neutral-800 px-3 py-1.5 rounded-full border border-neutral-300 dark:border-neutral-700 hover:border-brand-500 hover:text-brand-600 transition-colors"
@@ -247,11 +262,31 @@ export function Header() {
                   <span>Desk</span>
                 </Link>
               )}
+
+              {session?.role === 'reader' && (
+                <Link
+                  href="/member"
+                  className="flex items-center gap-1.5 text-xs font-bold text-amber-800 dark:text-amber-200 bg-amber-50 dark:bg-amber-950/60 px-3 py-1.5 rounded-full border border-amber-200 dark:border-amber-900 hover:border-amber-400 transition-colors"
+                >
+                  <Sparkles className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
+                  <span>Member Space</span>
+                </Link>
+              )}
+
+              {!session && (
+                <button
+                  type="button"
+                  onClick={() => setIsAuthOpen(true)}
+                  className="flex items-center gap-1.5 text-xs font-bold text-brand-700 dark:text-brand-300 bg-brand-50 dark:bg-brand-950/60 px-3.5 py-1.5 rounded-full border border-brand-200 dark:border-brand-900 hover:bg-brand-700 hover:text-white transition-colors"
+                >
+                  <span>Subscribe</span>
+                </button>
+              )}
             </nav>
 
             {/* Actions: Search, Sign In, & Theme Toggle */}
             <div className="flex items-center gap-1.5 sm:gap-3">
-              {session && (
+              {session?.role === 'publisher' && (
                 <Link
                   href="/publisher"
                   className="lg:hidden flex items-center gap-1 text-xs font-bold text-brand-700 dark:text-brand-300 bg-brand-50 dark:bg-brand-950 px-2.5 py-1 rounded-full border border-brand-200 dark:border-brand-800 shadow-xs"
@@ -259,6 +294,26 @@ export function Header() {
                   <PenTool className="w-3 h-3 text-brand-600" />
                   <span>Desk</span>
                 </Link>
+              )}
+
+              {session?.role === 'reader' && (
+                <Link
+                  href="/member"
+                  className="lg:hidden flex items-center gap-1 text-xs font-bold text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-950 px-2.5 py-1 rounded-full border border-amber-200 dark:border-amber-800 shadow-xs"
+                >
+                  <Sparkles className="w-3 h-3 text-amber-600" />
+                  <span>Member</span>
+                </Link>
+              )}
+
+              {!session && (
+                <button
+                  type="button"
+                  onClick={() => setIsAuthOpen(true)}
+                  className="lg:hidden flex items-center gap-1 text-xs font-bold text-brand-700 dark:text-brand-300 bg-brand-50 dark:bg-brand-950 px-2.5 py-1 rounded-full border border-brand-200 dark:border-brand-800 shadow-xs"
+                >
+                  <span>Subscribe</span>
+                </button>
               )}
 
               <Link
@@ -269,6 +324,21 @@ export function Header() {
                 <Search className="w-5 h-5" />
               </Link>
 
+              {/* My Library Button */}
+              <button
+                onClick={() => setIsLibraryOpen(true)}
+                className="p-2 rounded-full text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors relative"
+                title="My Library (സൂക്ഷിച്ച ലേഖനങ്ങൾ)"
+                aria-label="My Library"
+              >
+                <Bookmark className="w-5 h-5" />
+                {bookmarkCount > 0 && (
+                  <span className="absolute top-1 right-0.5 w-4 h-4 rounded-full bg-brand-700 text-white text-[9px] font-bold flex items-center justify-center shadow-xs animate-in zoom-in">
+                    {bookmarkCount > 9 ? '9+' : bookmarkCount}
+                  </span>
+                )}
+              </button>
+
               <button
                 onClick={() => setIsAuthOpen(true)}
                 className={`p-2 rounded-full transition-colors flex items-center gap-1 ${
@@ -276,7 +346,13 @@ export function Header() {
                     ? 'text-brand-700 dark:text-brand-300 bg-brand-50 dark:bg-brand-950/50'
                     : 'text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800'
                 }`}
-                title={session ? `Signed in as ${session.name}` : 'Editorial Sign In'}
+                title={
+                  session
+                    ? session.role === 'publisher'
+                      ? `Signed in as Editor ${session.name}`
+                      : `Signed in as Member ${session.name}`
+                    : 'Subscriber & Reader Sign In'
+                }
               >
                 <User className="w-5 h-5" />
               </button>
@@ -326,14 +402,14 @@ export function Header() {
         {/* Mobile & Tablet Full Drawer */}
         {isMobileMenuOpen && (
           <div className="lg:hidden border-b border-neutral-200 dark:border-neutral-800 bg-paper-light dark:bg-paper-dark px-4 pt-3 pb-8 space-y-2.5 shadow-2xl max-h-[85vh] overflow-y-auto">
-            {session && (
+            {session?.role === 'publisher' && (
               <div className="p-3.5 mb-2 rounded-xl bg-brand-50 dark:bg-brand-950/80 border border-brand-200 dark:border-brand-800 space-y-2.5">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-serif font-bold text-brand-800 dark:text-brand-300">
                     Editorial Session • {session.name}
                   </span>
                   <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-brand-700 text-white">
-                    Publisher
+                    Publisher Desk
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -352,9 +428,60 @@ export function Header() {
                     }}
                     className="px-3 py-2.5 rounded-lg bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 text-xs font-medium"
                   >
-                    Manage
+                    Account
                   </button>
                 </div>
+              </div>
+            )}
+
+            {session?.role === 'reader' && (
+              <div className="p-3.5 mb-2 rounded-xl bg-neutral-900 text-white border border-neutral-800 space-y-2.5">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-serif font-bold text-neutral-100">
+                    Subscriber Lounge • {session.name}
+                  </span>
+                  <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-amber-600 text-white">
+                    Active Patron
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Link
+                    href="/member"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-lg bg-amber-600 hover:bg-amber-500 text-white text-xs font-bold shadow"
+                  >
+                    <Sparkles className="w-3.5 h-3.5" />
+                    <span>Open Member Lounge</span>
+                  </Link>
+                  <button
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      setIsAuthOpen(true);
+                    }}
+                    className="px-3 py-2.5 rounded-lg bg-neutral-800 border border-neutral-700 text-neutral-300 text-xs font-medium"
+                  >
+                    Account
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {!session && (
+              <div className="p-3 mb-2 rounded-xl bg-brand-50/70 dark:bg-brand-950/40 border border-brand-200 dark:border-brand-900 flex items-center justify-between">
+                <div>
+                  <p className="text-xs font-bold text-neutral-900 dark:text-neutral-100">Digital Webzine &amp; Packets</p>
+                  <p className="text-[10px] text-neutral-500">Sign in for unlimited reading &amp; library</p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    setIsAuthOpen(true);
+                  }}
+                  className="px-3 py-1.5 rounded-lg bg-brand-700 hover:bg-brand-600 text-white text-xs font-bold shadow"
+                >
+                  Join / Sign In
+                </button>
               </div>
             )}
 
@@ -505,6 +632,26 @@ export function Header() {
             >
               Show More / Latest (എല്ലാ വാർത്തകളും)
             </Link>
+
+            {/* Mobile Library Button */}
+            <button
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                setIsLibraryOpen(true);
+              }}
+              className="w-full text-left py-2 text-sm font-bold text-neutral-800 dark:text-neutral-200 hover:text-brand-600 flex items-center justify-between border-b border-neutral-100 dark:border-neutral-800"
+            >
+              <div className="flex items-center gap-2">
+                <Bookmark className="w-4 h-4 text-brand-600" />
+                <span>My Library / ലൈബ്രറി</span>
+              </div>
+              {bookmarkCount > 0 && (
+                <span className="px-2 py-0.5 rounded-full bg-brand-50 dark:bg-brand-950 text-brand-700 dark:text-brand-300 text-xs font-bold">
+                  {bookmarkCount}
+                </span>
+              )}
+            </button>
+
             {session ? (
               <div className="pt-2 flex items-center justify-between border-t border-neutral-200 dark:border-neutral-800">
                 <span className="text-xs text-neutral-500 font-medium truncate max-w-[200px]">Logged in: {session.email}</span>
@@ -540,6 +687,12 @@ export function Header() {
         onClose={() => setIsAuthOpen(false)}
         session={session}
         onSessionChange={(newSession) => setSession(newSession)}
+      />
+
+      {/* Reader Library Modal */}
+      <MyLibraryModal
+        isOpen={isLibraryOpen}
+        onClose={() => setIsLibraryOpen(false)}
       />
     </>
   );
