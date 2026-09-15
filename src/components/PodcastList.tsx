@@ -28,14 +28,14 @@ export function PodcastList({ podcasts }: PodcastListProps) {
               <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-xl overflow-hidden shrink-0 shadow">
                 <Image src={pod.coverImage} alt={pod.title} fill className="object-cover" />
               </div>
-              <div className="space-y-1.5 min-w-0">
+              <div className="space-y-1.5 min-w-0 flex-1">
                 <span className="text-[11px] font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400 flex items-center gap-1">
                   <Mic className="w-3 h-3" /> {pod.speaker}
                 </span>
-                <h2 className="font-serif text-base sm:text-lg font-bold text-neutral-900 dark:text-neutral-50 leading-snug line-clamp-2">
+                <h2 className="font-serif text-base sm:text-lg font-bold text-neutral-900 dark:text-neutral-50 leading-snug line-clamp-2 break-words">
                   {pod.title}
                 </h2>
-                <p className="text-xs text-neutral-600 dark:text-neutral-400 line-clamp-2">
+                <p className="text-xs text-neutral-600 dark:text-neutral-400 line-clamp-2 break-words">
                   {pod.excerpt}
                 </p>
               </div>

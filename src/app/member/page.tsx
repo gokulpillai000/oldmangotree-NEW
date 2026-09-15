@@ -121,7 +121,7 @@ export default function MemberSpacePage() {
   // If Not Logged In: Subscriber Access & Login View
   if (!session) {
     return (
-      <div className="max-w-md mx-auto my-6 p-6 sm:p-8 bg-paper-card dark:bg-paper-cardDark rounded-2xl border border-neutral-200 dark:border-neutral-800 shadow-xl space-y-6">
+      <div className="max-w-md mx-auto my-6 p-4 sm:p-8 bg-paper-card dark:bg-paper-cardDark rounded-2xl border border-neutral-200 dark:border-neutral-800 shadow-xl space-y-6">
         <div className="space-y-2 text-center">
           <div className="w-12 h-12 rounded-full bg-brand-50 dark:bg-brand-950/60 mx-auto flex items-center justify-center text-brand-700 dark:text-brand-400 border border-brand-200 dark:border-brand-900">
             <User className="w-6 h-6" />
@@ -226,22 +226,22 @@ export default function MemberSpacePage() {
   return (
     <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8 py-2 sm:py-4">
       {/* Member Header Card */}
-      <div className="p-6 sm:p-8 rounded-3xl bg-neutral-900 text-white border border-neutral-800 shadow-xl space-y-4">
+      <div className="p-4 sm:p-8 rounded-2xl sm:rounded-3xl bg-neutral-900 text-white border border-neutral-800 shadow-xl space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="space-y-1.5">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-900/60 text-brand-300 text-xs font-bold uppercase tracking-wider border border-brand-800">
               <span className="w-2 h-2 rounded-full bg-brand-400 animate-pulse"></span>
               <span>Active Patron • ഡിജിറ്റൽ വരിക്കാരൻ</span>
             </div>
-            <h1 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight">
+            <h1 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight break-words">
               Welcome, {session.name}
             </h1>
-            <p className="text-xs sm:text-sm text-neutral-400">
+            <p className="text-xs sm:text-sm text-neutral-400 break-all">
               Logged in as <span className="font-mono text-neutral-300">{session.email}</span>
             </p>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap">
             {session.role === 'publisher' && (
               <Link
                 href="/publisher"
@@ -314,11 +314,11 @@ export default function MemberSpacePage() {
                   <span className="text-[10px] font-bold uppercase text-brand-600">
                     {a.category}
                   </span>
-                  <h3 className="font-serif text-sm font-bold text-neutral-900 dark:text-neutral-100 group-hover:text-brand-600 transition-colors line-clamp-1">
+                  <h3 className="font-serif text-sm font-bold text-neutral-900 dark:text-neutral-100 group-hover:text-brand-600 transition-colors line-clamp-1 break-words">
                     {a.title}
                   </h3>
                   {a.authorNames && (
-                    <p className="text-[11px] text-neutral-500 line-clamp-1">{a.authorNames}</p>
+                    <p className="text-[11px] text-neutral-500 line-clamp-1 break-words">{a.authorNames}</p>
                   )}
                 </Link>
               ))}
@@ -327,7 +327,7 @@ export default function MemberSpacePage() {
         </div>
 
         {/* Reading History Panel */}
-        <div className="p-5 sm:p-6 rounded-2xl bg-paper-card dark:bg-paper-cardDark border border-neutral-200 dark:border-neutral-800 shadow-sm space-y-4">
+        <div className="p-4 sm:p-6 rounded-2xl bg-paper-card dark:bg-paper-cardDark border border-neutral-200 dark:border-neutral-800 shadow-sm space-y-4">
           <div className="flex items-center justify-between border-b border-neutral-100 dark:border-neutral-800 pb-3">
             <div className="flex items-center gap-2">
               <Clock className="w-4 h-4 text-brand-700 dark:text-brand-400" />
@@ -350,7 +350,7 @@ export default function MemberSpacePage() {
                   className="group flex items-center justify-between p-2.5 rounded-xl hover:bg-neutral-50 dark:hover:bg-neutral-900/60 border border-transparent hover:border-neutral-200 dark:hover:border-neutral-800 transition-all"
                 >
                   <div className="min-w-0 flex-1">
-                    <h3 className="font-serif text-sm font-bold text-neutral-900 dark:text-neutral-100 group-hover:text-brand-600 transition-colors line-clamp-1">
+                    <h3 className="font-serif text-sm font-bold text-neutral-900 dark:text-neutral-100 group-hover:text-brand-600 transition-colors line-clamp-1 break-words">
                       {a.title}
                     </h3>
                     <p className="text-[11px] text-neutral-500">
@@ -366,7 +366,7 @@ export default function MemberSpacePage() {
       </div>
 
       {/* Exclusive Webzine Issues Showcase */}
-      <div className="p-6 rounded-3xl bg-paper-card dark:bg-paper-cardDark border border-neutral-200 dark:border-neutral-800 shadow-sm space-y-4">
+      <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-paper-card dark:bg-paper-cardDark border border-neutral-200 dark:border-neutral-800 shadow-sm space-y-4">
         <div className="flex items-center justify-between border-b border-neutral-100 dark:border-neutral-800 pb-3">
           <div className="flex items-center gap-2">
             <BookOpen className="w-5 h-5 text-brand-700 dark:text-brand-400" />
@@ -385,7 +385,7 @@ export default function MemberSpacePage() {
             className="p-4 rounded-2xl border border-neutral-200 dark:border-neutral-800 hover:border-brand-500 bg-neutral-50/50 dark:bg-neutral-900/40 transition-all group"
           >
             <span className="text-[10px] font-bold uppercase text-brand-600">Current Issue</span>
-            <h3 className="font-serif text-base font-bold text-neutral-900 dark:text-neutral-100 group-hover:text-brand-600 mt-1">
+            <h3 className="font-serif text-base font-bold text-neutral-900 dark:text-neutral-100 group-hover:text-brand-600 mt-1 break-words">
               PACKET 2 — Modern Political &amp; Cultural Debates
             </h3>
             <p className="text-xs text-neutral-500 mt-1 line-clamp-2">
@@ -402,7 +402,7 @@ export default function MemberSpacePage() {
             className="p-4 rounded-2xl border border-neutral-200 dark:border-neutral-800 hover:border-brand-500 bg-neutral-50/50 dark:bg-neutral-900/40 transition-all group"
           >
             <span className="text-[10px] font-bold uppercase text-brand-600">Inaugural Issue</span>
-            <h3 className="font-serif text-base font-bold text-neutral-900 dark:text-neutral-100 group-hover:text-brand-600 mt-1">
+            <h3 className="font-serif text-base font-bold text-neutral-900 dark:text-neutral-100 group-hover:text-brand-600 mt-1 break-words">
               PACKET 1 — Sports Culture &amp; Global Perspectives
             </h3>
             <p className="text-xs text-neutral-500 mt-1 line-clamp-2">

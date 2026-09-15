@@ -18,10 +18,10 @@ export function AudioPlayer() {
   if (!currentTrack) return null;
 
   return (
-    <div className="fixed bottom-[56px] md:bottom-0 left-0 right-0 z-50 bg-neutral-900/95 backdrop-blur-md border-t border-neutral-800 text-white shadow-2xl transition-all duration-300">
+    <div className="fixed bottom-[56px] md:bottom-0 left-0 right-0 z-40 bg-neutral-900/95 backdrop-blur-md border-t border-neutral-800 text-white shadow-2xl transition-all duration-300">
       {/* Mobile Expandable Overlay View */}
       {isExpanded && (
-        <div className="p-4 space-y-4 border-b border-neutral-800 bg-neutral-950 md:hidden">
+        <div className="p-4 space-y-4 border-b border-neutral-800 bg-neutral-950 md:hidden max-h-[70vh] overflow-y-auto">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold uppercase tracking-wider text-brand-400 flex items-center gap-1.5">
               <Radio className="w-4 h-4 animate-pulse" /> High-Fidelity Audio Stream

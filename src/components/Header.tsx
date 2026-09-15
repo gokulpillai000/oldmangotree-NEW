@@ -108,9 +108,9 @@ export function Header() {
     <>
       <header className="sticky top-0 z-40 w-full bg-paper-light/95 dark:bg-paper-dark/95 backdrop-blur-md border-b border-neutral-200 dark:border-neutral-800 transition-colors">
         {/* Pre-Header Bar with Trending Topic Pills (Truecopy Think Signature) */}
-        <div className="bg-neutral-900 text-neutral-200 text-xs py-1.5 px-4 border-b border-neutral-800">
-          <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
-            <div className="flex items-center gap-2 overflow-x-auto scrollbar-none overscroll-x-contain py-0.5">
+        <div className="bg-neutral-900 text-neutral-200 text-xs py-1.5 px-3 sm:px-4 border-b border-neutral-800 w-full overflow-hidden">
+          <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4 min-w-0">
+            <div className="flex items-center gap-2 overflow-x-auto scrollbar-none overscroll-x-contain py-0.5 min-w-0 flex-1">
               <span className="hidden sm:inline-flex items-center gap-1 text-[11px] font-bold text-neutral-300 uppercase tracking-wider shrink-0">
                 <TrendingUp className="w-3 h-3 text-brand-400" /> Trending:
               </span>
@@ -285,11 +285,11 @@ export function Header() {
             </nav>
 
             {/* Actions: Search, Sign In, & Theme Toggle */}
-            <div className="flex items-center gap-1.5 sm:gap-3">
+            <div className="flex items-center gap-1 sm:gap-2 shrink-0">
               {session?.role === 'publisher' && (
                 <Link
                   href="/publisher"
-                  className="lg:hidden flex items-center gap-1 text-xs font-bold text-brand-700 dark:text-brand-300 bg-brand-50 dark:bg-brand-950 px-2.5 py-1 rounded-full border border-brand-200 dark:border-brand-800 shadow-xs"
+                  className="hidden min-[420px]:inline-flex lg:hidden items-center gap-1 text-xs font-bold text-brand-700 dark:text-brand-300 bg-brand-50 dark:bg-brand-950 px-2.5 py-1 rounded-full border border-brand-200 dark:border-brand-800 shadow-xs"
                 >
                   <PenTool className="w-3 h-3 text-brand-600" />
                   <span>Desk</span>
@@ -299,7 +299,7 @@ export function Header() {
               {session?.role === 'reader' && (
                 <Link
                   href="/member"
-                  className="lg:hidden flex items-center gap-1 text-xs font-bold text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-950 px-2.5 py-1 rounded-full border border-amber-200 dark:border-amber-800 shadow-xs"
+                  className="hidden min-[420px]:inline-flex lg:hidden items-center gap-1 text-xs font-bold text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-950 px-2.5 py-1 rounded-full border border-amber-200 dark:border-amber-800 shadow-xs"
                 >
                   <Sparkles className="w-3 h-3 text-amber-600" />
                   <span>Member</span>
@@ -310,7 +310,7 @@ export function Header() {
                 <button
                   type="button"
                   onClick={() => setIsAuthOpen(true)}
-                  className="lg:hidden flex items-center gap-1 text-xs font-bold text-brand-700 dark:text-brand-300 bg-brand-50 dark:bg-brand-950 px-2.5 py-1 rounded-full border border-brand-200 dark:border-brand-800 shadow-xs"
+                  className="hidden min-[420px]:inline-flex lg:hidden items-center gap-1 text-xs font-bold text-brand-700 dark:text-brand-300 bg-brand-50 dark:bg-brand-950 px-2.5 py-1 rounded-full border border-brand-200 dark:border-brand-800 shadow-xs"
                 >
                   <span>Subscribe</span>
                 </button>
@@ -318,16 +318,16 @@ export function Header() {
 
               <Link
                 href="/search"
-                className="p-2 rounded-full text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+                className="p-1.5 sm:p-2 rounded-full text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
                 aria-label="Search"
               >
                 <Search className="w-5 h-5" />
               </Link>
 
-              {/* My Library Button */}
+              {/* My Library Button (Hidden on small mobile since it is pinned in BottomNav) */}
               <button
                 onClick={() => setIsLibraryOpen(true)}
-                className="p-2 rounded-full text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors relative"
+                className="hidden sm:inline-flex p-2 rounded-full text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors relative"
                 title="My Library (സൂക്ഷിച്ച ലേഖനങ്ങൾ)"
                 aria-label="My Library"
               >
@@ -341,7 +341,7 @@ export function Header() {
 
               <button
                 onClick={() => setIsAuthOpen(true)}
-                className={`p-2 rounded-full transition-colors flex items-center gap-1 ${
+                className={`p-1.5 sm:p-2 rounded-full transition-colors flex items-center gap-1 ${
                   session
                     ? 'text-brand-700 dark:text-brand-300 bg-brand-50 dark:bg-brand-950/50'
                     : 'text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800'
@@ -359,7 +359,7 @@ export function Header() {
 
               <button
                 onClick={toggleDarkMode}
-                className="p-2 rounded-full text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+                className="p-1.5 sm:p-2 rounded-full text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
                 aria-label="Toggle Theme"
               >
                 {isDarkMode ? <Sun className="w-5 h-5 text-amber-400" /> : <Moon className="w-5 h-5" />}
@@ -368,7 +368,7 @@ export function Header() {
               {/* Mobile menu trigger */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="lg:hidden p-2 rounded-lg text-neutral-700 dark:text-neutral-300"
+                className="lg:hidden p-1.5 sm:p-2 rounded-lg text-neutral-700 dark:text-neutral-300"
                 aria-label="Open Menu"
               >
                 {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -378,7 +378,7 @@ export function Header() {
         </div>
 
         {/* Horizontal Swipeable Category Chips for Mobile & Tablets */}
-        <div className="lg:hidden flex items-center gap-2 px-3 sm:px-4 py-2 overflow-x-auto scrollbar-none overscroll-x-contain border-t border-neutral-100 dark:border-neutral-800/80 bg-neutral-50/50 dark:bg-neutral-900/40">
+        <div className="lg:hidden flex items-center gap-2 px-3 sm:px-4 py-2 overflow-x-auto scrollbar-none overscroll-x-contain border-t border-neutral-100 dark:border-neutral-800/80 bg-neutral-50/50 dark:bg-neutral-900/40 w-full min-w-0">
           {categories.map((cat) => {
             const isActive = pathname === cat.href;
             return (

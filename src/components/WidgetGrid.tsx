@@ -58,7 +58,7 @@ export function WidgetGrid({ articles, featuredIssue, podcasts, series, videos }
                 <BookOpen className="w-3.5 h-3.5 text-brand-400" />
                 <span>Webzine Packet</span>
               </div>
-              <h1 className="font-serif text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
+              <h1 className="font-serif text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight break-words">
                 {featuredIssue.title} — {featuredIssue.theme}
               </h1>
               <p className="text-neutral-300 text-sm sm:text-base max-w-2xl leading-relaxed">
@@ -103,7 +103,7 @@ export function WidgetGrid({ articles, featuredIssue, podcasts, series, videos }
 
             <div className="p-5 sm:p-6 space-y-3">
               <Link href={`/articles/${leadArticle.slug}`} className="block">
-                <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-neutral-50 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors leading-snug">
+                <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-neutral-50 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors leading-snug break-words">
                   {leadArticle.title}
                 </h2>
               </Link>
@@ -159,9 +159,9 @@ export function WidgetGrid({ articles, featuredIssue, podcasts, series, videos }
             {stackedArticles.map((art) => (
               <article
                 key={art.slug}
-                className="flex items-center gap-3.5 sm:gap-4 p-3.5 rounded-xl bg-paper-card dark:bg-paper-cardDark border border-neutral-200 dark:border-neutral-800 hover:shadow-md transition-shadow group"
+                className="flex items-center gap-3 sm:gap-4 p-3 sm:p-3.5 rounded-xl bg-paper-card dark:bg-paper-cardDark border border-neutral-200 dark:border-neutral-800 hover:shadow-md transition-shadow group"
               >
-                <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-lg overflow-hidden shrink-0">
+                <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-24 md:h-24 lg:w-28 lg:h-28 rounded-lg overflow-hidden shrink-0">
                   <Image
                     src={art.coverImage}
                     alt={art.title}
@@ -212,7 +212,7 @@ export function WidgetGrid({ articles, featuredIssue, podcasts, series, videos }
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {packetArticles.slice(0, 3).map((art) => (
               <article
                 key={art.slug}
@@ -289,9 +289,9 @@ export function WidgetGrid({ articles, featuredIssue, podcasts, series, videos }
             {sportsArticles.slice(0, 2).map((art) => (
               <article
                 key={art.slug}
-                className="group flex flex-col sm:flex-row gap-4 p-4 rounded-2xl bg-paper-card dark:bg-paper-cardDark border border-neutral-200 dark:border-neutral-800 hover:shadow-md transition-shadow"
+                className="group flex flex-col sm:flex-row md:flex-col lg:flex-row gap-4 p-4 rounded-2xl bg-paper-card dark:bg-paper-cardDark border border-neutral-200 dark:border-neutral-800 hover:shadow-md transition-shadow"
               >
-                <div className="relative aspect-[16/10] sm:aspect-[4/3] sm:w-52 w-full rounded-xl overflow-hidden shrink-0">
+                <div className="relative aspect-[16/10] sm:aspect-[4/3] md:aspect-[16/10] lg:aspect-[4/3] sm:w-48 md:w-full lg:w-48 xl:w-52 w-full rounded-xl overflow-hidden shrink-0">
                   <Image
                     src={art.coverImage}
                     alt={art.title}
@@ -493,7 +493,7 @@ export function WidgetGrid({ articles, featuredIssue, podcasts, series, videos }
                 key={pod.id}
                 className="flex items-center gap-3 sm:gap-4 p-3.5 sm:p-4 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200/60 dark:border-neutral-800 hover:shadow-sm transition-all"
               >
-                <div className="relative w-14 h-14 sm:w-18 sm:h-18 md:w-20 md:h-20 rounded-xl overflow-hidden shrink-0">
+                <div className="relative w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-xl overflow-hidden shrink-0">
                   <Image src={pod.coverImage} alt={pod.title} fill className="object-cover" />
                 </div>
                 <div className="min-w-0 flex-1 space-y-1">

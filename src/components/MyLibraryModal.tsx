@@ -70,26 +70,26 @@ export function MyLibraryModal({ isOpen, onClose }: MyLibraryModalProps) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-neutral-900/60 backdrop-blur-sm animate-in fade-in">
+    <div className="fixed inset-0 z-[60] flex items-end sm:items-center justify-center p-0 sm:p-4 bg-neutral-900/60 backdrop-blur-sm animate-in fade-in">
       <div className="relative w-full max-w-2xl bg-paper-card dark:bg-paper-cardDark rounded-t-3xl sm:rounded-2xl border border-neutral-200 dark:border-neutral-800 shadow-2xl overflow-hidden max-h-[90vh] sm:max-h-[85vh] flex flex-col">
         {/* Header */}
         <div className="p-4 sm:p-6 border-b border-neutral-200 dark:border-neutral-800 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-brand-50 dark:bg-brand-950/50 flex items-center justify-center text-brand-700 dark:text-brand-400 border border-brand-200 dark:border-brand-800">
+            <div className="w-10 h-10 rounded-full bg-brand-50 dark:bg-brand-950/50 flex items-center justify-center text-brand-700 dark:text-brand-400 border border-brand-200 dark:border-brand-800 shrink-0">
               <Bookmark className="w-5 h-5" />
             </div>
-            <div>
-              <h2 className="font-serif text-lg sm:text-xl font-bold text-neutral-900 dark:text-neutral-50">
+            <div className="min-w-0">
+              <h2 className="font-serif text-base sm:text-xl font-bold text-neutral-900 dark:text-neutral-50 truncate">
                 എന്റെ ലൈബ്രറി | My Library
               </h2>
-              <p className="text-xs text-neutral-500 dark:text-neutral-400">
+              <p className="text-xs text-neutral-500 dark:text-neutral-400 truncate">
                 സൂക്ഷിച്ച ലേഖനങ്ങളും വായനാ ചരിത്രവും
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-2 rounded-full text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+            className="p-2 rounded-full text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors shrink-0"
             aria-label="Close"
           >
             <X className="w-5 h-5" />
@@ -97,40 +97,40 @@ export function MyLibraryModal({ isOpen, onClose }: MyLibraryModalProps) {
         </div>
 
         {/* Tab Selector */}
-        <div className="flex items-center px-4 sm:px-6 border-b border-neutral-100 dark:border-neutral-800/80 bg-neutral-50/50 dark:bg-neutral-900/40 text-xs sm:text-sm shrink-0">
+        <div className="flex items-center px-2 sm:px-6 overflow-x-auto scrollbar-none border-b border-neutral-100 dark:border-neutral-800/80 bg-neutral-50/50 dark:bg-neutral-900/40 text-xs sm:text-sm shrink-0">
           <button
             onClick={() => setActiveTab('bookmarks')}
-            className={`flex items-center gap-2 py-3 px-3 font-semibold border-b-2 transition-colors ${
+            className={`flex items-center gap-1.5 sm:gap-2 py-3 px-2.5 sm:px-3 font-semibold border-b-2 shrink-0 transition-colors ${
               activeTab === 'bookmarks'
                 ? 'border-brand-700 text-brand-700 dark:border-brand-400 dark:text-brand-400'
                 : 'border-transparent text-neutral-600 dark:text-neutral-400 hover:text-neutral-900'
             }`}
           >
-            <Bookmark className="w-4 h-4" />
+            <Bookmark className="w-4 h-4 shrink-0" />
             <span>Saved Stories ({bookmarks.length})</span>
           </button>
 
           <button
             onClick={() => setActiveTab('history')}
-            className={`flex items-center gap-2 py-3 px-3 font-semibold border-b-2 transition-colors ${
+            className={`flex items-center gap-1.5 sm:gap-2 py-3 px-2.5 sm:px-3 font-semibold border-b-2 shrink-0 transition-colors ${
               activeTab === 'history'
                 ? 'border-brand-700 text-brand-700 dark:border-brand-400 dark:text-brand-400'
                 : 'border-transparent text-neutral-600 dark:text-neutral-400 hover:text-neutral-900'
             }`}
           >
-            <Clock className="w-4 h-4" />
+            <Clock className="w-4 h-4 shrink-0" />
             <span>History ({history.length})</span>
           </button>
 
           <button
             onClick={() => setActiveTab('letters')}
-            className={`flex items-center gap-2 py-3 px-3 font-semibold border-b-2 transition-colors ${
+            className={`flex items-center gap-1.5 sm:gap-2 py-3 px-2.5 sm:px-3 font-semibold border-b-2 shrink-0 transition-colors ${
               activeTab === 'letters'
                 ? 'border-brand-700 text-brand-700 dark:border-brand-400 dark:text-brand-400'
                 : 'border-transparent text-neutral-600 dark:text-neutral-400 hover:text-neutral-900'
             }`}
           >
-            <Mail className="w-4 h-4" />
+            <Mail className="w-4 h-4 shrink-0" />
             <span>My Letters ({letters.length})</span>
           </button>
         </div>

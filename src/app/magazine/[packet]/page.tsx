@@ -35,8 +35,8 @@ export default function IssuePacketPage({ params }: IssuePageProps) {
   return (
     <div className="space-y-10">
       {/* Packet Header Banner */}
-      <section className="relative rounded-3xl overflow-hidden bg-neutral-900 dark:bg-neutral-950 text-white p-8 sm:p-12 shadow-md border border-neutral-800">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+      <section className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-neutral-900 dark:bg-neutral-950 text-white p-5 sm:p-8 md:p-12 shadow-md border border-neutral-800">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-center">
           <div className="md:col-span-8 space-y-4">
             <div className="flex items-center gap-3">
               <span className="px-3.5 py-1 rounded-full text-xs sm:text-sm font-serif font-bold uppercase tracking-widest bg-brand-700 text-white">
@@ -50,11 +50,11 @@ export default function IssuePacketPage({ params }: IssuePageProps) {
               </span>
             </div>
 
-            <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
+            <h1 className="font-serif text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight break-words">
               {issue.title}
             </h1>
 
-            <p className="text-xl sm:text-2xl text-neutral-300 font-serif italic leading-relaxed">
+            <p className="text-lg sm:text-2xl text-neutral-300 font-serif italic leading-relaxed break-words">
               “{issue.theme}”
             </p>
           </div>
@@ -79,13 +79,13 @@ export default function IssuePacketPage({ params }: IssuePageProps) {
           {issueArticles.map((article, index) => (
             <div
               key={article.slug}
-              className="group p-6 sm:p-7 rounded-2xl bg-paper-card dark:bg-paper-cardDark border border-neutral-200 dark:border-neutral-800 hover:border-brand-500 transition-all shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
+              className="group p-4 sm:p-6 md:p-7 rounded-2xl bg-paper-card dark:bg-paper-cardDark border border-neutral-200 dark:border-neutral-800 hover:border-brand-500 transition-all shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4 sm:gap-6"
             >
-              <div className="flex items-start gap-4">
-                <span className="font-serif text-3xl sm:text-4xl font-bold text-neutral-300 dark:text-neutral-700 group-hover:text-brand-600 transition-colors">
+              <div className="flex items-start gap-3 sm:gap-4 min-w-0">
+                <span className="font-serif text-2xl sm:text-4xl font-bold text-neutral-300 dark:text-neutral-700 group-hover:text-brand-600 transition-colors shrink-0">
                   0{index + 1}
                 </span>
-                <div className="space-y-1.5">
+                <div className="space-y-1.5 min-w-0 flex-1">
                   <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-brand-600 uppercase">
                     <span>{article.category}</span>
                     {article.isPremium && (
@@ -95,24 +95,24 @@ export default function IssuePacketPage({ params }: IssuePageProps) {
                     )}
                   </div>
                   <Link href={`/articles/${article.slug}`}>
-                    <h3 className="font-serif text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-50 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors leading-snug">
+                    <h3 className="font-serif text-lg sm:text-2xl font-bold text-neutral-900 dark:text-neutral-50 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors leading-snug break-words">
                       {article.title}
                     </h3>
                   </Link>
-                  <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 line-clamp-2 leading-relaxed">
+                  <p className="text-xs sm:text-base text-neutral-600 dark:text-neutral-400 line-clamp-2 leading-relaxed break-words">
                     {article.excerpt}
                   </p>
                   <div className="flex items-center gap-3 text-xs sm:text-sm text-neutral-500 pt-1.5 font-sans">
-                    <span className="font-serif font-bold text-neutral-800 dark:text-neutral-200">{article.authorNames}</span>
+                    <span className="font-serif font-bold text-neutral-800 dark:text-neutral-200 truncate">{article.authorNames}</span>
                     <span>•</span>
-                    <span>{formatDate(article.publishedAt)}</span>
+                    <span className="shrink-0">{formatDate(article.publishedAt)}</span>
                   </div>
                 </div>
               </div>
 
               <Link
                 href={`/articles/${article.slug}`}
-                className="shrink-0 flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 text-xs sm:text-sm font-bold group-hover:bg-brand-700 group-hover:text-white transition-colors"
+                className="w-full md:w-auto shrink-0 flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 text-xs sm:text-sm font-bold group-hover:bg-brand-700 group-hover:text-white transition-colors"
               >
                 Read Article <ArrowRight className="w-4 h-4" />
               </Link>

@@ -174,12 +174,12 @@ export function SocialShareBar({
             aria-label="Send letter to editor"
           >
             <Mail className="w-4 h-4 text-brand-600 dark:text-brand-400" />
-            <span className="hidden xs:inline">Letter</span>
+            <span>Letter</span>
           </button>
         </div>
 
         {/* Social Share Toolbar */}
-        <div className="flex items-center justify-end gap-1.5 pt-2 sm:pt-0 border-t sm:border-t-0 border-neutral-200/60 dark:border-neutral-800">
+        <div className="flex items-center justify-around sm:justify-end gap-1.5 pt-2 sm:pt-0 border-t sm:border-t-0 border-neutral-200/60 dark:border-neutral-800">
           <span className="hidden xl:inline text-neutral-500 dark:text-neutral-400 mr-1 text-[11px]">
             Share:
           </span>

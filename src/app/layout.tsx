@@ -72,14 +72,14 @@ export default function RootLayout({
           `
         }} />
       </head>
-      <body className="antialiased">
+      <body className="antialiased w-full overflow-x-hidden">
         <AudioProvider>
-          <div className="flex flex-col min-h-screen pb-32 md:pb-24">
+          <div className="flex flex-col min-h-screen w-full overflow-x-hidden">
             <Header />
-            <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-8">
+            <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-8 pb-8 sm:pb-12">
               {children}
             </main>
-            <footer className="border-t border-neutral-200 dark:border-neutral-800 bg-paper-card dark:bg-paper-cardDark py-12 mb-14 md:mb-0 transition-colors">
+            <footer className="border-t border-neutral-200 dark:border-neutral-800 bg-paper-card dark:bg-paper-cardDark py-10 sm:py-12 mb-14 md:mb-0 transition-colors">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
                   {/* Brand & Slogan */}
