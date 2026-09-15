@@ -104,7 +104,7 @@ export function AuthModal({ isOpen, onClose, session, onSessionChange }: AuthMod
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-sm transition-opacity">
+    <div className="fixed inset-0 z-[60] flex items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-sm transition-opacity">
       <div className="relative w-full max-w-md max-h-[92vh] overflow-y-auto bg-paper-card dark:bg-paper-cardDark rounded-2xl p-5 sm:p-8 border border-neutral-200 dark:border-neutral-800 shadow-2xl space-y-6">
         {/* Close Button */}
         <button

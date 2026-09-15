@@ -124,14 +124,14 @@ export default function VideosPage() {
       : videosData.filter((v) => v.playlist === selectedPlaylist);
 
   return (
-    <div className="space-y-10 pb-16">
+    <div className="space-y-8 sm:space-y-10">
       {/* Portal Header */}
       <header className="border-b border-neutral-200 dark:border-neutral-800 pb-6 space-y-2">
         <div className="flex items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400">
           <Film className="w-4 h-4" />
           <span>Videos &amp; Documentaries | വീഡിയോകള്‍</span>
         </div>
-        <h1 className="font-serif text-3xl sm:text-5xl font-bold text-neutral-900 dark:text-neutral-50 tracking-tight">
+        <h1 className="font-serif text-2xl sm:text-4xl lg:text-5xl font-bold text-neutral-900 dark:text-neutral-50 tracking-tight break-words">
           വീഡിയോ എസ്സേകളും സംവാദങ്ങളും
         </h1>
         <p className="text-neutral-600 dark:text-neutral-400 text-sm sm:text-base max-w-3xl leading-relaxed">
@@ -171,22 +171,22 @@ export default function VideosPage() {
             </div>
           </div>
 
-          <h2 className="font-serif text-xl sm:text-3xl font-bold leading-snug">
+          <h2 className="font-serif text-xl sm:text-3xl font-bold leading-snug break-words">
             {activeVideo.title}
           </h2>
 
-          <p className="text-neutral-300 text-sm sm:text-base leading-relaxed max-w-4xl">
+          <p className="text-neutral-300 text-sm sm:text-base leading-relaxed max-w-4xl break-words">
             {activeVideo.excerpt}
           </p>
 
           <div className="flex items-center justify-between pt-4 border-t border-neutral-800 text-xs text-neutral-400">
-            <div className="flex items-center gap-2">
-              <User className="w-4 h-4 text-brand-400" />
-              <span className="font-semibold text-neutral-200">
+            <div className="flex items-center gap-2 min-w-0">
+              <User className="w-4 h-4 text-brand-400 shrink-0" />
+              <span className="font-semibold text-neutral-200 truncate">
                 {activeVideo.speaker}
               </span>
             </div>
-            <span>Now Playing</span>
+            <span className="shrink-0">Now Playing</span>
           </div>
         </div>
       </div>
@@ -194,16 +194,16 @@ export default function VideosPage() {
       {/* Playlist / Category Filter Tabs */}
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <h3 className="font-serif text-2xl font-bold text-neutral-900 dark:text-neutral-50 flex items-center gap-2">
-            <Film className="w-5 h-5 text-brand-600" />
+          <h3 className="font-serif text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-50 flex items-center gap-2">
+            <Film className="w-5 h-5 text-brand-600 shrink-0" />
             <span>പ്ലേലിസ്റ്റുകൾ (Playlists &amp; Series)</span>
           </h3>
-          <span className="text-xs text-neutral-500 font-bold">
+          <span className="text-xs text-neutral-500 font-bold shrink-0">
             {filteredVideos.length} Videos
           </span>
         </div>
 
-        <div className="flex items-center gap-2 overflow-x-auto scrollbar-none overscroll-x-contain pb-2">
+        <div className="flex items-center gap-2 overflow-x-auto scrollbar-none overscroll-x-contain pb-2 w-full min-w-0">
           {playlists.map((pl) => (
             <button
               key={pl}

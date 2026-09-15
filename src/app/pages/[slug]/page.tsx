@@ -25,7 +25,7 @@ export default async function StaticInfoPage({ params }: StaticPageProps) {
   }
 
   return (
-    <article className="max-w-4xl mx-auto py-8 space-y-8">
+    <article className="max-w-4xl mx-auto py-4 sm:py-8 space-y-6 sm:space-y-8">
       <div>
         <Link
           href="/"
@@ -41,18 +41,18 @@ export default async function StaticInfoPage({ params }: StaticPageProps) {
           <FileText className="w-4 h-4" />
           <span>Official Information &amp; Policy</span>
         </div>
-        <h1 className="font-serif text-3xl sm:text-5xl font-bold text-neutral-900 dark:text-neutral-50 tracking-tight">
+        <h1 className="font-serif text-3xl sm:text-5xl font-bold text-neutral-900 dark:text-neutral-50 tracking-tight break-words">
           {page.title}
         </h1>
         {page.subtitle && (
-          <p className="text-neutral-600 dark:text-neutral-400 text-sm sm:text-base">
+          <p className="text-neutral-600 dark:text-neutral-400 text-sm sm:text-base break-words">
             {page.subtitle}
           </p>
         )}
       </header>
 
       <div
-        className="prose prose-neutral dark:prose-invert max-w-none font-serif text-base sm:text-lg leading-relaxed space-y-4"
+        className="prose prose-neutral dark:prose-invert max-w-none font-serif text-base sm:text-lg leading-relaxed space-y-4 overflow-hidden break-words"
         dangerouslySetInnerHTML={{ __html: page.contentHtml || '' }}
       />
     </article>

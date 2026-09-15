@@ -31,13 +31,13 @@ export function SearchClient({ initialArticles }: SearchClientProps) {
     <div className="space-y-6">
       {/* Search Input */}
       <div className="relative">
-        <Search className="absolute left-4 top-3.5 w-5 h-5 text-neutral-400" />
+        <Search className="absolute left-3.5 sm:left-4 top-3.5 w-5 h-5 text-neutral-400" />
         <input
           type="text"
           placeholder="Search by title, keyword, or tag (e.g., Kerala, Politics, Messi)..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-paper-card dark:bg-paper-cardDark border border-neutral-300 dark:border-neutral-700 text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-brand-500 shadow-sm font-sans"
+          className="w-full min-w-0 pl-11 sm:pl-12 pr-4 py-3 sm:py-3.5 text-sm sm:text-base rounded-2xl bg-paper-card dark:bg-paper-cardDark border border-neutral-300 dark:border-neutral-700 text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-brand-500 shadow-sm font-sans"
           autoFocus
         />
       </div>
@@ -67,7 +67,7 @@ export function SearchClient({ initialArticles }: SearchClientProps) {
         {results.map((res) => (
           <div
             key={res.slug}
-            className="p-5 sm:p-6 rounded-xl bg-paper-card dark:bg-paper-cardDark border border-neutral-200 dark:border-neutral-800 hover:border-brand-500 transition-colors shadow-sm space-y-2.5"
+            className="p-4 sm:p-6 rounded-xl bg-paper-card dark:bg-paper-cardDark border border-neutral-200 dark:border-neutral-800 hover:border-brand-500 transition-colors shadow-sm space-y-2.5"
           >
             <div className="flex items-center justify-between text-xs sm:text-sm">
               <span className="font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">
@@ -79,17 +79,17 @@ export function SearchClient({ initialArticles }: SearchClientProps) {
             </div>
 
             <Link href={`/articles/${res.slug}`}>
-              <h2 className="font-serif text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-50 hover:text-brand-600 dark:hover:text-brand-400 transition-colors leading-snug">
+              <h2 className="font-serif text-lg sm:text-2xl font-bold text-neutral-900 dark:text-neutral-50 hover:text-brand-600 dark:hover:text-brand-400 transition-colors leading-snug break-words">
                 {res.title}
               </h2>
             </Link>
 
-            <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 line-clamp-2 leading-relaxed">
+            <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 line-clamp-2 leading-relaxed break-words">
               {res.excerpt}
             </p>
 
             <div className="pt-2 flex items-center justify-between text-xs sm:text-sm text-neutral-500 border-t border-neutral-100 dark:border-neutral-800">
-              <span className="font-serif font-bold text-neutral-800 dark:text-neutral-200">{res.authorNames || 'Editorial Desk'}</span>
+              <span className="font-serif font-bold text-neutral-800 dark:text-neutral-200 line-clamp-1 break-words">{res.authorNames || 'Editorial Desk'}</span>
               <span>{formatDate(res.publishedAt)}</span>
             </div>
           </div>

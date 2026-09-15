@@ -396,7 +396,7 @@ export default function EditorialDeskPage() {
   // Unauthenticated Sign In State
   if (!session) {
     return (
-      <div className="max-w-md mx-auto my-8 p-6 sm:p-8 bg-paper-card dark:bg-paper-cardDark rounded-2xl border border-neutral-200 dark:border-neutral-800 shadow-xl space-y-6">
+      <div className="max-w-md mx-auto my-6 sm:my-8 p-4 sm:p-8 bg-paper-card dark:bg-paper-cardDark rounded-2xl border border-neutral-200 dark:border-neutral-800 shadow-xl space-y-6">
         <div className="space-y-2 text-center">
           <div className="w-12 h-12 rounded-full bg-brand-50 dark:bg-brand-950/60 mx-auto flex items-center justify-center text-brand-700 dark:text-brand-400 border border-brand-200 dark:border-brand-900">
             <Lock className="w-6 h-6" />
@@ -500,7 +500,7 @@ export default function EditorialDeskPage() {
   // Role Gate: Strictly for Editorial / Publisher Staff
   if (session.role !== 'publisher') {
     return (
-      <div className="max-w-md mx-auto my-12 p-6 sm:p-8 bg-paper-card dark:bg-paper-cardDark rounded-2xl border border-neutral-200 dark:border-neutral-800 shadow-xl space-y-6 text-center">
+      <div className="max-w-md mx-auto my-8 sm:my-12 p-4 sm:p-8 bg-paper-card dark:bg-paper-cardDark rounded-2xl border border-neutral-200 dark:border-neutral-800 shadow-xl space-y-6 text-center">
         <div className="w-14 h-14 rounded-full bg-amber-50 dark:bg-amber-950/60 mx-auto flex items-center justify-center text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-900">
           <AlertCircle className="w-7 h-7" />
         </div>
@@ -570,7 +570,7 @@ export default function EditorialDeskPage() {
       </div>
 
       {/* Navigation Segmented Tab Bar (Mobile Thumb-Friendly) */}
-      <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto scrollbar-none pb-1 border-b border-neutral-200 dark:border-neutral-800">
+      <div className="w-full min-w-0 flex items-center gap-1.5 sm:gap-2 overflow-x-auto scrollbar-none pb-1 border-b border-neutral-200 dark:border-neutral-800">
         <button
           type="button"
           onClick={() => setActiveTab('editor')}
@@ -676,7 +676,7 @@ export default function EditorialDeskPage() {
             </div>
           )}
 
-          <form onSubmit={handlePublish} className="bg-paper-card dark:bg-paper-cardDark p-5 sm:p-8 rounded-2xl border border-neutral-200 dark:border-neutral-800 shadow-xl space-y-6">
+          <form onSubmit={handlePublish} className="bg-paper-card dark:bg-paper-cardDark p-4 sm:p-8 rounded-2xl border border-neutral-200 dark:border-neutral-800 shadow-xl space-y-6">
             <div className="space-y-5">
               {/* Article Title */}
               <div className="space-y-1">
@@ -689,7 +689,7 @@ export default function EditorialDeskPage() {
                   placeholder="e.g. വികസന നയങ്ങളും ആധുനിക കേരളീയ ചിന്തകളും"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 text-base font-serif font-bold text-neutral-900 dark:text-neutral-100 focus:outline-none focus:ring-2 focus:ring-brand-500"
+                  className="w-full min-w-0 px-4 py-3 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 text-base font-serif font-bold text-neutral-900 dark:text-neutral-100 focus:outline-none focus:ring-2 focus:ring-brand-500"
                 />
               </div>
 
@@ -703,7 +703,7 @@ export default function EditorialDeskPage() {
                   placeholder="Brief summary or introductory dek for cards and social previews..."
                   value={excerpt}
                   onChange={(e) => setExcerpt(e.target.value)}
-                  className="w-full px-4 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 text-sm text-neutral-900 dark:text-neutral-100 focus:outline-none focus:ring-2 focus:ring-brand-500"
+                  className="w-full min-w-0 px-4 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 text-sm text-neutral-900 dark:text-neutral-100 focus:outline-none focus:ring-2 focus:ring-brand-500"
                 />
               </div>
 
@@ -745,7 +745,7 @@ export default function EditorialDeskPage() {
                   value={customTagInput}
                   onChange={(e) => setCustomTagInput(e.target.value)}
                   onKeyDown={handleAddCustomTag}
-                  className="w-full px-3 py-2 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 text-xs text-neutral-900 dark:text-neutral-100 focus:outline-none focus:ring-2 focus:ring-brand-500"
+                  className="w-full min-w-0 px-3 py-2 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 text-xs text-neutral-900 dark:text-neutral-100 focus:outline-none focus:ring-2 focus:ring-brand-500"
                 />
               </div>
 
@@ -758,7 +758,7 @@ export default function EditorialDeskPage() {
                   <select
                     value={webzineIssue}
                     onChange={(e) => setWebzineIssue(e.target.value)}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 text-xs sm:text-sm font-semibold text-neutral-900 dark:text-neutral-100 focus:outline-none focus:ring-2 focus:ring-brand-500"
+                    className="w-full min-w-0 px-3.5 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 text-xs sm:text-sm font-semibold text-neutral-900 dark:text-neutral-100 focus:outline-none focus:ring-2 focus:ring-brand-500"
                   >
                     <option value="packet-2">Packet 2 (Current Issue)</option>
                     <option value="packet-1">Packet 1 (Inaugural Issue)</option>
@@ -775,7 +775,7 @@ export default function EditorialDeskPage() {
                     type="datetime-local"
                     value={scheduledTime}
                     onChange={(e) => setScheduledTime(e.target.value)}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 text-xs sm:text-sm text-neutral-900 dark:text-neutral-100 focus:outline-none focus:ring-2 focus:ring-brand-500"
+                    className="w-full min-w-0 max-w-full px-3.5 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 text-xs sm:text-sm text-neutral-900 dark:text-neutral-100 focus:outline-none focus:ring-2 focus:ring-brand-500"
                   />
                 </div>
               </div>
@@ -879,16 +879,16 @@ export default function EditorialDeskPage() {
                     </span>
                   </div>
 
-                  <h3 className="font-serif text-base font-bold text-neutral-900 dark:text-neutral-100 line-clamp-1">
+                  <h3 className="font-serif text-base font-bold text-neutral-900 dark:text-neutral-100 line-clamp-1 break-words">
                     {article.title}
                   </h3>
 
-                  <p className="text-xs text-neutral-500 line-clamp-1 font-mono">
+                  <p className="text-xs text-neutral-500 line-clamp-1 font-mono break-all">
                     /{article.slug}
                   </p>
                 </div>
 
-                <div className="flex items-center gap-2 shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-neutral-100 dark:border-neutral-800">
+                <div className="flex items-center gap-2 shrink-0 flex-wrap sm:flex-nowrap pt-2 sm:pt-0 border-t sm:border-t-0 border-neutral-100 dark:border-neutral-800">
                   <button
                     onClick={() => handleEditArticle(article.slug)}
                     className="flex items-center gap-1 px-3 py-1.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 hover:bg-brand-50 hover:text-brand-700 dark:hover:bg-brand-950 text-xs font-bold text-neutral-700 dark:text-neutral-300 transition-colors"
@@ -924,7 +924,7 @@ export default function EditorialDeskPage() {
       {activeTab === 'packets' && (
         <div className="space-y-8">
           {/* Create or Update Packet Form */}
-          <form onSubmit={handleSavePacket} className="bg-paper-card dark:bg-paper-cardDark p-5 sm:p-7 rounded-2xl border border-neutral-200 dark:border-neutral-800 shadow-xl space-y-4">
+          <form onSubmit={handleSavePacket} className="bg-paper-card dark:bg-paper-cardDark p-4 sm:p-7 rounded-2xl border border-neutral-200 dark:border-neutral-800 shadow-xl space-y-4">
             <h2 className="font-serif text-lg font-bold text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
               <Layers className="w-5 h-5 text-brand-600" />
               <span>Create or Update Issue Packet (വെബ്സീൻ പാക്കറ്റ്)</span>
@@ -940,7 +940,7 @@ export default function EditorialDeskPage() {
                   required
                   value={packetId}
                   onChange={(e) => setPacketId(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 text-xs font-mono text-neutral-900 dark:text-neutral-100"
+                  className="w-full min-w-0 px-3 py-2 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 text-xs font-mono text-neutral-900 dark:text-neutral-100"
                 />
               </div>
               <div className="space-y-1">
@@ -952,7 +952,7 @@ export default function EditorialDeskPage() {
                   required
                   value={packetTitle}
                   onChange={(e) => setPacketTitle(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 text-xs font-bold text-neutral-900 dark:text-neutral-100"
+                  className="w-full min-w-0 px-3 py-2 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 text-xs font-bold text-neutral-900 dark:text-neutral-100"
                 />
               </div>
               <div className="space-y-1">
@@ -964,7 +964,7 @@ export default function EditorialDeskPage() {
                   required
                   value={packetNumber}
                   onChange={(e) => setPacketNumber(Number(e.target.value))}
-                  className="w-full px-3 py-2 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 text-xs font-bold text-neutral-900 dark:text-neutral-100"
+                  className="w-full min-w-0 px-3 py-2 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 text-xs font-bold text-neutral-900 dark:text-neutral-100"
                 />
               </div>
             </div>

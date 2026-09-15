@@ -24,7 +24,7 @@ export default function TagPage({ params }: TagPageProps) {
   const articles = getArticlesByTag(rawTag);
 
   return (
-    <div className="space-y-8 pb-16">
+    <div className="space-y-8 pb-6 sm:pb-8">
       <div>
         <Link
           href="/"
@@ -40,7 +40,7 @@ export default function TagPage({ params }: TagPageProps) {
           <Hash className="w-4 h-4" />
           <span>Topic Tag</span>
         </div>
-        <h1 className="font-serif text-3xl sm:text-5xl font-bold text-neutral-900 dark:text-neutral-50">
+        <h1 className="font-serif text-3xl sm:text-5xl font-bold text-neutral-900 dark:text-neutral-50 break-words">
           #{rawTag}
         </h1>
         <p className="text-neutral-600 dark:text-neutral-400 text-sm sm:text-base max-w-2xl leading-relaxed">
@@ -53,7 +53,7 @@ export default function TagPage({ params }: TagPageProps) {
           ഈ ടാഗിൽ ലേഖനങ്ങൾ ലഭ്യമല്ല.
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {articles.map((article) => (
             <article
               key={article.slug}
@@ -74,9 +74,9 @@ export default function TagPage({ params }: TagPageProps) {
                   )}
                 </div>
 
-                <div className="p-5 space-y-3">
+                <div className="p-4 sm:p-5 space-y-3">
                   <Link href={`/articles/${article.slug}`}>
-                    <h2 className="font-serif text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-50 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors line-clamp-2 leading-snug">
+                    <h2 className="font-serif text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-50 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors line-clamp-2 leading-snug break-words">
                       {article.title}
                     </h2>
                   </Link>
@@ -86,8 +86,8 @@ export default function TagPage({ params }: TagPageProps) {
                 </div>
               </div>
 
-              <div className="p-5 pt-0 border-t border-neutral-100 dark:border-neutral-800 mt-4 space-y-1.5 text-xs sm:text-sm">
-                <p className="font-serif text-base font-bold text-neutral-800 dark:text-neutral-200 line-clamp-1">
+              <div className="p-4 sm:p-5 pt-0 border-t border-neutral-100 dark:border-neutral-800 mt-3 sm:mt-4 space-y-1.5 text-xs sm:text-sm">
+                <p className="font-serif text-base font-bold text-neutral-800 dark:text-neutral-200 line-clamp-1 break-words">
                   {article.authorNames}
                 </p>
                 <div className="flex items-center justify-between text-neutral-500 text-xs">

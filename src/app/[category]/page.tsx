@@ -31,12 +31,12 @@ export default function CategoryPage({ params }: CategoryPageProps) {
   const articles = getArticlesByCategory(category);
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 pb-6 sm:pb-8">
       <header className="border-b border-neutral-200 dark:border-neutral-800 pb-6 space-y-2">
         <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400">
           Category Feed
         </span>
-        <h1 className="font-serif text-3xl sm:text-5xl font-bold text-neutral-900 dark:text-neutral-50">
+        <h1 className="font-serif text-3xl sm:text-5xl font-bold text-neutral-900 dark:text-neutral-50 break-words">
           {catObj.name}
         </h1>
         <p className="text-neutral-600 dark:text-neutral-400 text-sm sm:text-base max-w-2xl leading-relaxed">
@@ -49,7 +49,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
           No articles published in this category yet.
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {articles.map((article) => (
             <article
               key={article.slug}
@@ -70,9 +70,9 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                   )}
                 </div>
 
-                <div className="p-5 space-y-3">
+                <div className="p-4 sm:p-5 space-y-3">
                   <Link href={`/articles/${article.slug}`}>
-                    <h2 className="font-serif text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-50 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors line-clamp-2 leading-snug">
+                    <h2 className="font-serif text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-50 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors line-clamp-2 leading-snug break-words">
                       {article.title}
                     </h2>
                   </Link>
@@ -82,8 +82,8 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                 </div>
               </div>
 
-              <div className="p-5 pt-0 border-t border-neutral-100 dark:border-neutral-800 mt-4 space-y-1.5 text-xs sm:text-sm">
-                <p className="font-serif text-base font-bold text-neutral-800 dark:text-neutral-200 line-clamp-1">
+              <div className="p-4 sm:p-5 pt-0 border-t border-neutral-100 dark:border-neutral-800 mt-3 sm:mt-4 space-y-1.5 text-xs sm:text-sm">
+                <p className="font-serif text-base font-bold text-neutral-800 dark:text-neutral-200 line-clamp-1 break-words">
                   {article.authorNames}
                 </p>
                 <div className="flex items-center justify-between text-neutral-500 text-xs">

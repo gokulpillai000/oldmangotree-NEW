@@ -32,8 +32,8 @@ export function BottomNav() {
 
   return (
     <>
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-paper-light/95 dark:bg-paper-dark/95 backdrop-blur-lg border-t border-neutral-200 dark:border-neutral-800 px-1 py-1 shadow-lg transition-colors">
-        <div className="flex items-center justify-around">
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-paper-light/95 dark:bg-paper-dark/95 backdrop-blur-lg border-t border-neutral-200 dark:border-neutral-800 px-1 py-1 shadow-lg transition-colors pb-[env(safe-area-inset-bottom,0px)]">
+        <div className="flex items-center justify-around max-w-lg mx-auto">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive =
@@ -45,7 +45,7 @@ export function BottomNav() {
               <Link
                 key={item.label}
                 href={item.href}
-                className={`flex flex-col items-center justify-center py-1.5 px-2.5 min-w-[54px] min-h-[44px] rounded-xl transition-all ${
+                className={`flex flex-col items-center justify-center py-1 px-1 flex-1 max-w-[72px] min-h-[44px] rounded-xl transition-all ${
                   isActive
                     ? 'text-brand-600 dark:text-brand-400 font-bold scale-105'
                     : 'text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200'
@@ -60,7 +60,7 @@ export function BottomNav() {
           {/* Library / Bookmarks Tab */}
           <button
             onClick={() => setIsLibraryOpen(true)}
-            className="flex flex-col items-center justify-center py-1.5 px-2.5 min-w-[54px] min-h-[44px] rounded-xl text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200 transition-all relative"
+            className="flex flex-col items-center justify-center py-1 px-1 flex-1 max-w-[72px] min-h-[44px] rounded-xl text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200 transition-all relative"
             aria-label="My Library"
           >
             <div className="relative">

@@ -37,7 +37,7 @@ export function ArticleReaderToolbar({
   };
 
   return (
-    <div className="sticky top-16 z-30 bg-paper-light/95 dark:bg-paper-dark/95 backdrop-blur-md border-y border-neutral-200 dark:border-neutral-800 py-2.5 px-4 my-4 flex items-center justify-between gap-2 shadow-sm rounded-xl">
+    <div className="relative z-10 bg-paper-card dark:bg-paper-cardDark border border-neutral-200 dark:border-neutral-800 py-2.5 px-3.5 sm:px-4 my-4 flex items-center justify-between gap-2 shadow-xs rounded-xl">
       {/* Audio Play Trigger */}
       {audioNarrationUrl ? (
         <button

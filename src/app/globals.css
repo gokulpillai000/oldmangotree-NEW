@@ -46,25 +46,33 @@
   html {
     font-size: 16px;
     -webkit-text-size-adjust: 100%;
-  }
-  @media (min-width: 480px) {
-    html {
-      font-size: 17px;
-    }
-  }
-  @media (min-width: 640px) {
-    html {
-      font-size: 18px;
-    }
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
   }
   body {
     @apply bg-paper-light dark:bg-paper-dark text-neutral-900 dark:text-neutral-100 font-sans antialiased min-h-screen transition-colors duration-200;
     font-family: 'DzainTrueCopy', sans-serif;
     overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
     overflow-wrap: break-word;
   }
-  img, video, iframe {
+  img, video, iframe, embed, object {
     max-width: 100%;
+    height: auto;
+  }
+  table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  pre {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 }
 

@@ -15,13 +15,13 @@ export default function LatestPage() {
   const categories = getAllCategories();
 
   return (
-    <div className="space-y-8 pb-16">
+    <div className="space-y-8 pb-6 sm:pb-8">
       <header className="border-b border-neutral-200 dark:border-neutral-800 pb-6 space-y-2">
         <div className="flex items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400">
           <Newspaper className="w-4 h-4" />
           <span>Latest Feed | ഏറ്റവും പുതിയവ</span>
         </div>
-        <h1 className="font-serif text-3xl sm:text-5xl font-bold text-neutral-900 dark:text-neutral-50 tracking-tight">
+        <h1 className="font-serif text-3xl sm:text-5xl font-bold text-neutral-900 dark:text-neutral-50 tracking-tight break-words">
           സമകാലിക ലേഖനങ്ങളും വാർത്താ വിശകലനങ്ങളും
         </h1>
         <p className="text-neutral-600 dark:text-neutral-400 text-sm sm:text-base max-w-2xl leading-relaxed">
@@ -29,7 +29,7 @@ export default function LatestPage() {
         </p>
 
         {/* Category Quick Filter Chips */}
-        <div className="flex items-center gap-2 overflow-x-auto scrollbar-none pt-4">
+        <div className="w-full min-w-0 flex items-center gap-2 overflow-x-auto scrollbar-none pt-4">
           <span className="text-xs font-bold uppercase tracking-wider text-neutral-400 shrink-0">
             വിഭാഗങ്ങൾ:
           </span>
@@ -56,7 +56,7 @@ export default function LatestPage() {
           ലേഖനങ്ങൾ ലഭ്യമല്ല.
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {articles.map((article) => (
             <article
               key={article.slug}
@@ -85,9 +85,9 @@ export default function LatestPage() {
                   )}
                 </div>
 
-                <div className="p-5 space-y-3">
+                <div className="p-4 sm:p-5 space-y-3">
                   <Link href={`/articles/${article.slug}`}>
-                    <h2 className="font-serif text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-50 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors line-clamp-2 leading-snug">
+                    <h2 className="font-serif text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-50 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors line-clamp-2 leading-snug break-words">
                       {article.title}
                     </h2>
                   </Link>
@@ -97,8 +97,8 @@ export default function LatestPage() {
                 </div>
               </div>
 
-              <div className="p-5 pt-0 border-t border-neutral-100 dark:border-neutral-800 mt-4 space-y-1.5 text-xs sm:text-sm">
-                <p className="font-serif text-base font-bold text-neutral-800 dark:text-neutral-200 line-clamp-1">
+              <div className="p-4 sm:p-5 pt-0 border-t border-neutral-100 dark:border-neutral-800 mt-3 sm:mt-4 space-y-1.5 text-xs sm:text-sm">
+                <p className="font-serif text-base font-bold text-neutral-800 dark:text-neutral-200 line-clamp-1 break-words">
                   {article.authorNames}
                 </p>
                 <div className="flex items-center justify-between text-neutral-500 text-xs">
