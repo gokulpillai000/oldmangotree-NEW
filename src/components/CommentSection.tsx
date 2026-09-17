@@ -15,7 +15,7 @@ export function CommentSection({ articleSlug }: { articleSlug: string }) {
     {
       id: '1',
       author: 'Anil Kumar',
-      text: 'വളരെ ആഴത്തിലുള്ള വായനയും മികച്ച നിരീക്ഷണങ്ങളും! അടുത്ത പാക്കറ്റിനായി കാത്തിരിക്കുന്നു.',
+      text: 'A profound reading and perceptive analysis! Looking forward to the next webzine packet.',
       timestamp: '2 hours ago',
     },
   ]);

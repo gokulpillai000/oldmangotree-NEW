@@ -6,6 +6,7 @@ import { Header } from '@/components/Header';
 import { BottomNav } from '@/components/BottomNav';
 import { AudioProvider } from '@/components/AudioContext';
 import { AudioPlayer } from '@/components/AudioPlayer';
+import { Logo } from '@/components/Logo';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -14,8 +15,8 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: 'OldmanGoTree — Mobile-First Database-Less Media & Webzine Platform',
-  description: 'Flat-file digital webzine, long-form articles, issue packets, and audio streaming.',
+  title: 'Old Mango Tree — Where ideas come to sit',
+  description: 'Flat-file digital webzine, long-form journalism, cinema, sports, politics, arts & culture, literature, and audio streaming.',
 };
 
 export default function RootLayout({
@@ -84,38 +85,28 @@ export default function RootLayout({
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
                   {/* Brand & Slogan */}
                   <div className="md:col-span-4 space-y-3">
-                    <div className="flex items-center gap-2.5">
-                      <div className="w-8 h-8 rounded-full bg-brand-700 flex items-center justify-center text-white font-serif text-base font-bold shadow-sm">
-                        OM
-                      </div>
-                      <span className="font-serif text-2xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50">
-                        oldman<span className="text-brand-600 dark:text-brand-400">go</span>tree
-                      </span>
-                    </div>
-                    <p className="font-serif text-sm font-semibold text-neutral-700 dark:text-neutral-300">
-                      Readers are Thinkers | വായിക്കുന്നവരാണ് ചിന്തിക്കുന്നവർ
-                    </p>
-                    <p className="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed max-w-sm">
-                      സ്വതന്ത്രവും നിർഭയവുമായ ഡിജിറ്റൽ മാധ്യമ സംരംഭം. ആഴത്തിലുള്ള വിശകലനങ്ങൾ, സാഹിത്യം, രാഷ്ട്രീയം, പോഡ്‌കാസ്റ്റുകൾ, അന്വേഷണാത്മക വീഡിയോകൾ.
+                    <Logo variant="horizontal" />
+                    <p className="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed max-w-sm pt-2">
+                      An independent, fearless digital media initiative. In-depth analysis, literature, cinema, politics, sports, arts &amp; culture, podcasts, and investigative stories.
                     </p>
                   </div>
 
                   {/* Main Departments */}
                   <div className="md:col-span-4 space-y-3">
                     <h4 className="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-                      Departments &amp; Media | വിഭാഗങ്ങൾ
+                      Sections &amp; Coverage
                     </h4>
                     <div className="grid grid-cols-2 gap-2 text-xs text-neutral-600 dark:text-neutral-400">
-                      <Link href="/politics" className="hover:text-brand-600 transition-colors">Politics (രാഷ്ട്രീയം)</Link>
-                      <Link href="/literature" className="hover:text-brand-600 transition-colors">Literature (സാഹിത്യം)</Link>
-                      <Link href="/videos" className="hover:text-brand-600 transition-colors">Videos (വീഡിയോകൾ)</Link>
-                      <Link href="/series" className="hover:text-brand-600 transition-colors">Series (പരമ്പരകൾ)</Link>
+                      <Link href="/cinema" className="hover:text-brand-600 transition-colors">🎥 Cinema</Link>
+                      <Link href="/sports" className="hover:text-brand-600 transition-colors">🏏 Sports</Link>
+                      <Link href="/politics" className="hover:text-brand-600 transition-colors">🏛️ Politics</Link>
+                      <Link href="/arts-culture" className="hover:text-brand-600 transition-colors">🎨 Arts &amp; Culture</Link>
+                      <Link href="/literature" className="hover:text-brand-600 transition-colors">📚 Literature</Link>
+                      <Link href="/miscellaneous" className="hover:text-brand-600 transition-colors">💭 Miscellaneous</Link>
                       <Link href="/magazine" className="hover:text-brand-600 transition-colors">Webzine Packets</Link>
-                      <Link href="/podcasts" className="hover:text-brand-600 transition-colors">Audio Hub (ഓഡിയോ)</Link>
-                      <Link href="/media" className="hover:text-brand-600 transition-colors">Media (മാധ്യമം)</Link>
-                      <Link href="/entertainment" className="hover:text-brand-600 transition-colors">Entertainment</Link>
-                      <Link href="/cinema" className="hover:text-brand-600 transition-colors">Cinema &amp; Film Studies</Link>
-                      <Link href="/sports" className="hover:text-brand-600 transition-colors">Sports &amp; Football</Link>
+                      <Link href="/podcasts" className="hover:text-brand-600 transition-colors">Audio &amp; Podcasts</Link>
+                      <Link href="/videos" className="hover:text-brand-600 transition-colors">Videos</Link>
+                      <Link href="/series" className="hover:text-brand-600 transition-colors">Special Series</Link>
                     </div>
                   </div>
 
@@ -125,20 +116,20 @@ export default function RootLayout({
                       Information &amp; Policies
                     </h4>
                     <div className="flex flex-col space-y-1.5 text-xs text-neutral-600 dark:text-neutral-400">
-                      <Link href="/pages/about-us" className="hover:text-brand-600 transition-colors">About Us (ഞങ്ങളെക്കുറിച്ച്)</Link>
-                      <Link href="/the-team" className="hover:text-brand-600 transition-colors">The Team (എഡിറ്റോറിയൽ സമിതി)</Link>
-                      <Link href="/pages/contact-us" className="hover:text-brand-600 transition-colors">Contact Us (ബന്ധപ്പെടുക)</Link>
-                      <Link href="/pages/grievance-redressal" className="hover:text-brand-600 transition-colors">Grievance Redressal (പരാതി പരിഹാരം)</Link>
-                      <Link href="/pages/privacy-policy" className="hover:text-brand-600 transition-colors">Privacy Policy (സ്വകാര്യതാ നയം)</Link>
-                      <Link href="/pages/terms-of-use" className="hover:text-brand-600 transition-colors">Terms of Use (ഉപയോഗ നിബന്ധനകൾ)</Link>
-                      <Link href="/pages/refund-policy" className="hover:text-brand-600 transition-colors">Refund Policy (റീഫണ്ട് നയം)</Link>
+                      <Link href="/pages/about-us" className="hover:text-brand-600 transition-colors">About Us</Link>
+                      <Link href="/the-team" className="hover:text-brand-600 transition-colors">The Team</Link>
+                      <Link href="/pages/contact-us" className="hover:text-brand-600 transition-colors">Contact Us</Link>
+                      <Link href="/pages/grievance-redressal" className="hover:text-brand-600 transition-colors">Grievance Redressal</Link>
+                      <Link href="/pages/privacy-policy" className="hover:text-brand-600 transition-colors">Privacy Policy</Link>
+                      <Link href="/pages/terms-of-use" className="hover:text-brand-600 transition-colors">Terms of Use</Link>
+                      <Link href="/pages/refund-policy" className="hover:text-brand-600 transition-colors">Refund Policy</Link>
                       <div className="pt-2 border-t border-neutral-100 dark:border-neutral-800 flex items-center gap-3">
                         <Link href="/member" className="font-semibold text-brand-600 hover:underline">
-                          Member Space (ലൗഞ്ച്)
+                          Member Space
                         </Link>
                         <span>•</span>
                         <Link href="/publisher" className="font-semibold text-neutral-500 hover:text-brand-600 hover:underline">
-                          Editorial Desk (ഡെസ്ക്)
+                          Editorial Desk
                         </Link>
                       </div>
                     </div>

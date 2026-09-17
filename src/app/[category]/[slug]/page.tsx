@@ -51,7 +51,7 @@ export default async function CategoryArticlePage({ params }: CategoryArticlePag
             href={`/${category}`}
             className="inline-flex items-center gap-1.5 text-xs font-semibold text-neutral-500 hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
           >
-            <ArrowLeft className="w-4 h-4" /> തിരികെ {category.toUpperCase()}-ലേക്ക്
+            <ArrowLeft className="w-4 h-4" /> Back to {category.toUpperCase()}
           </Link>
 
           {article.webzineIssue && (
@@ -207,7 +207,7 @@ export default async function CategoryArticlePage({ params }: CategoryArticlePag
             <div className="flex items-center justify-between">
               <div>
                 <span className="text-xs font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400">
-                  കൂടുതൽ വായനകൾ
+                  Further Reading
                 </span>
                 <h3 className="font-serif text-2xl font-bold text-neutral-900 dark:text-neutral-50">
                   {article.webzineIssue ? `More from ${article.webzineIssue.toUpperCase()} & Related` : 'Related Stories'}

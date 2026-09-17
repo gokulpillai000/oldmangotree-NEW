@@ -35,7 +35,7 @@ export default function SeriesDetailPage({ params }: SeriesPageProps) {
           className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-neutral-600 dark:text-neutral-400 hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
-          <span>എല്ലാ പരമ്പരകളും (All Series)</span>
+          <span>All Series</span>
         </Link>
       </div>
 
@@ -54,7 +54,7 @@ export default function SeriesDetailPage({ params }: SeriesPageProps) {
         <div className="md:col-span-7 space-y-4 min-w-0">
           <div className="flex items-center gap-2">
             <span className="px-3 py-1 rounded-full text-xs font-bold bg-brand-50 dark:bg-brand-950/60 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800">
-              {series.totalEpisodes} അധ്യായങ്ങൾ (Episodes)
+              {series.totalEpisodes} Episodes
             </span>
           </div>
 
@@ -70,7 +70,7 @@ export default function SeriesDetailPage({ params }: SeriesPageProps) {
 
           <div className="flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400 border-t border-b border-neutral-100 dark:border-neutral-800 py-3">
             <span className="font-bold text-neutral-900 dark:text-neutral-200">
-              രചന:
+              Author:
             </span>
             <span>{series.authorName}</span>
           </div>
@@ -86,10 +86,10 @@ export default function SeriesDetailPage({ params }: SeriesPageProps) {
         <div className="border-b border-neutral-200 dark:border-neutral-800 pb-4">
           <h2 className="font-serif text-2xl sm:text-3xl font-bold text-neutral-900 dark:text-neutral-50 flex items-center gap-2 break-words">
             <Layers className="w-6 h-6 text-brand-600 shrink-0" />
-            <span>അധ്യായങ്ങൾ (Episodes Directory)</span>
+            <span>Episodes Directory</span>
           </h2>
           <p className="text-neutral-500 text-sm mt-1">
-            ക്രമപ്രകാരം വായിക്കാൻ താഴെയുള്ള അധ്യായങ്ങളിൽ ക്ലിക്ക് ചെയ്യുക
+            Click on any chapter below to begin reading in sequence.
           </p>
         </div>
 
@@ -131,7 +131,7 @@ export default function SeriesDetailPage({ params }: SeriesPageProps) {
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2.5 sm:py-2 rounded-lg bg-neutral-100 dark:bg-neutral-800 hover:bg-brand-600 hover:text-white dark:hover:bg-brand-600 text-neutral-900 dark:text-neutral-100 text-xs sm:text-sm font-bold transition-colors"
                 >
                   <BookOpen className="w-4 h-4" />
-                  <span>വായിക്കുക</span>
+                  <span>Read Chapter</span>
                 </Link>
               </div>
             </div>

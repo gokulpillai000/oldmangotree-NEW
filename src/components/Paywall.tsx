@@ -112,7 +112,7 @@ export function Paywall({ articleTitle, onUnlockSuccess }: PaywallProps) {
             className="w-full sm:w-auto px-6 py-3 rounded-xl bg-brand-700 hover:bg-brand-600 text-white font-bold text-sm shadow transition-colors flex items-center justify-center gap-2"
           >
             <Sparkles className="w-4 h-4 text-amber-300" />
-            <span>Sign In as Subscriber (ലോഗിൻ)</span>
+            <span>Sign In as Subscriber</span>
           </button>
           <button
             type="button"

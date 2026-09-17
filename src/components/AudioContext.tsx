@@ -7,6 +7,7 @@ export interface AudioTrack {
   url: string;
   durationSeconds?: number;
   articleSlug?: string;
+  speaker?: string;
 }
 
 interface AudioContextType {

@@ -14,10 +14,10 @@ export default function NotFound() {
           404 • Page Not Found
         </span>
         <h1 className="font-serif text-3xl sm:text-4xl font-bold text-neutral-900 dark:text-neutral-100">
-          പേജ് കണ്ടെത്താനായില്ല
+          Page Not Found
         </h1>
         <p className="font-sans text-neutral-600 dark:text-neutral-400 text-sm sm:text-base max-w-md mx-auto leading-relaxed">
-          നിങ്ങൾ തിരയുന്ന പേജ് നിലവിലില്ല അല്ലെങ്കിൽ മറ്റൊരു വിലാസത്തിലേക്ക് മാറ്റിയിരിക്കുന്നു.
+          The page you are looking for does not exist, has been removed, or is temporarily unavailable.
         </p>
       </div>
 
@@ -27,14 +27,14 @@ export default function NotFound() {
           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-brand-700 hover:bg-brand-600 text-white font-medium text-sm transition-colors shadow-sm"
         >
           <Home className="w-4 h-4" />
-          <span>മുഖപേജിലേക്ക് മടങ്ങുക (Home)</span>
+          <span>Back to Home</span>
         </Link>
         <Link
           href="/magazine"
           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-paper-card dark:bg-paper-cardDark border border-neutral-300 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200 hover:border-brand-500 font-medium text-sm transition-colors"
         >
           <BookOpen className="w-4 h-4" />
-          <span>വെബ്സീൻ പാക്കറ്റുകൾ (Packets)</span>
+          <span>Webzine Editions</span>
         </Link>
       </div>
     </div>

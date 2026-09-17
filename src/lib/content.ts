@@ -54,6 +54,8 @@ export interface Category {
   name: string;
   description: string;
   color: string;
+  icon?: string;
+  subcategories?: { slug: string; name: string }[];
 }
 
 export interface Podcast {

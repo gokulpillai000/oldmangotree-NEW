@@ -66,7 +66,7 @@ export function LetterToEditorModal({
           <div className="space-y-1">
             <div className="flex items-center gap-2 text-brand-700 dark:text-brand-400">
               <Mail className="w-5 h-5" />
-              <span className="text-xs font-bold uppercase tracking-wider">Reader Dialogue | വായനക്കാരുടെ പ്രതികരണം</span>
+              <span className="text-xs font-bold uppercase tracking-wider">Reader Dialogue</span>
             </div>
             <h2 className="font-serif text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-50">
               Letter to the Editor
@@ -93,10 +93,10 @@ export function LetterToEditorModal({
             </div>
             <div className="space-y-1.5">
               <h3 className="font-serif text-lg sm:text-xl font-bold text-neutral-900 dark:text-neutral-50">
-                കത്ത് എഡിറ്റോറിയൽ ഡെസ്കിലേക്ക് കൈമാറി
+                Letter Forwarded to Editorial Desk
               </h3>
               <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 max-w-sm mx-auto leading-relaxed">
-                നിങ്ങളുടെ പ്രതികരണം ലഭിച്ചു. ശ്രദ്ധേയമായ കത്തുകൾ എഡിറ്റോറിയൽ സമിതി തിരഞ്ഞെടുത്ത് വെബ്സീനിൽ പ്രസിദ്ധീകരിക്കുന്നതാണ്.
+                Thank you for your response. Selected letters will be reviewed and published in the webzine edition.
               </p>
             </div>
             <button
@@ -111,7 +111,7 @@ export function LetterToEditorModal({
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
               <div className="space-y-1.5">
                 <label className="text-xs font-semibold text-neutral-700 dark:text-neutral-300">
-                  Name (പേര്) *
+                  Name *
                 </label>
                 <input
                   type="text"
@@ -139,7 +139,7 @@ export function LetterToEditorModal({
 
             <div className="space-y-1.5">
               <label className="text-xs font-semibold text-neutral-700 dark:text-neutral-300">
-                City / Location (സ്ഥലം)
+                City / Location
               </label>
               <input
                 type="text"
@@ -152,20 +152,20 @@ export function LetterToEditorModal({
 
             <div className="space-y-1.5">
               <label className="text-xs font-semibold text-neutral-700 dark:text-neutral-300">
-                Your Letter / Perspective (നിങ്ങളുടെ അഭിപ്രായം / പ്രതികരണം) *
+                Your Letter / Perspective *
               </label>
               <textarea
                 required
                 rows={4}
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                placeholder="ലേഖനത്തോടുള്ള നിങ്ങളുടെ വിയോജിപ്പുകൾ, യോജിപ്പുകൾ അല്ലെങ്കിൽ പുതിയ നിരീക്ഷണങ്ങൾ രേഖപ്പെടുത്തുക..."
+                placeholder="Share your critiques, agreements, or new observations on this article..."
                 className="w-full px-3.5 py-2.5 rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-xs sm:text-sm text-neutral-900 dark:text-neutral-100 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 leading-relaxed font-sans"
               />
             </div>
 
             <p className="text-[11px] text-neutral-500 dark:text-neutral-400">
-              തെരഞ്ഞെടുക്കപ്പെടുന്ന വായനക്കാരുടെ കത്തുകൾ ഓൾഡ്മാൻഗോ ട്രീ പത്രാധിപ സമിതി പേജുകളിൽ പ്രസിദ്ധീകരിക്കുന്നതായിരിക്കും.
+              Selected reader letters will be reviewed and featured on Old Mango Tree editorial pages.
             </p>
 
             <div className="flex items-center justify-end gap-3 pt-2 border-t border-neutral-100 dark:border-neutral-800">
@@ -181,7 +181,7 @@ export function LetterToEditorModal({
                 className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-700 hover:bg-brand-600 text-white font-medium text-xs sm:text-sm shadow-sm transition-colors"
               >
                 <Send className="w-4 h-4" />
-                <span>Send Letter (അയക്കുക)</span>
+                <span>Send Letter</span>
               </button>
             </div>
           </form>

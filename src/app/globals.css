@@ -51,7 +51,7 @@
     max-width: 100%;
   }
   body {
-    @apply bg-paper-light dark:bg-paper-dark text-neutral-900 dark:text-neutral-100 font-sans antialiased min-h-screen transition-colors duration-200;
+    @apply bg-paper-light dark:bg-paper-dark text-navy-950 dark:text-neutral-100 font-sans antialiased min-h-screen transition-colors duration-200;
     font-family: 'DzainTrueCopy', sans-serif;
     overflow-x: hidden;
     width: 100%;
@@ -90,19 +90,19 @@
 
 .prose h1, .prose h2, .prose h3, .prose h4 {
   font-family: 'DzainTrueCopy', sans-serif;
-  @apply font-bold text-neutral-900 dark:text-neutral-50 mt-6 mb-3;
+  @apply font-bold text-navy-950 dark:text-neutral-50 mt-6 mb-3;
 }
 
 .prose p {
   font-family: 'Dzain-TrueCopy Text', 'DzainTrueCopy', serif;
-  @apply text-neutral-700 dark:text-neutral-300 leading-relaxed mb-5 text-lg sm:text-xl;
+  @apply text-navy-900/90 dark:text-neutral-300 leading-relaxed mb-5 text-lg sm:text-xl;
 }
 
 .prose blockquote {
   font-family: 'Dzain-TrueCopy Text', 'DzainTrueCopy', serif;
-  @apply border-l-4 border-brand-600 pl-4 my-6 italic text-neutral-800 dark:text-neutral-200 bg-brand-50/50 dark:bg-brand-950/40 py-2.5 rounded-r-lg text-lg sm:text-xl;
+  @apply border-l-4 border-brand-600 pl-4 my-6 italic text-navy-900 dark:text-neutral-200 bg-brand-50/60 dark:bg-navy-900/50 py-2.5 rounded-r-lg text-lg sm:text-xl;
 }
 
 .prose ul {
-  @apply list-disc list-inside space-y-2 mb-4 text-neutral-700 dark:text-neutral-300 text-base sm:text-lg;
+  @apply list-disc list-inside space-y-2 mb-4 text-navy-900/80 dark:text-neutral-300 text-base sm:text-lg;
 }
