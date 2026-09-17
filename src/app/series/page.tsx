@@ -5,7 +5,7 @@ import { getAllSeries } from '@/lib/content';
 import { BookOpen, Layers, ArrowRight } from 'lucide-react';
 
 export const metadata = {
-  title: 'പ്രത്യേക പരമ്പരകൾ | Series - OldmanGoTree',
+  title: 'Special Series — Old Mango Tree',
   description: 'In-depth serialized cultural, political, and historical investigations.',
 };
 
@@ -17,13 +17,13 @@ export default function SeriesIndexPage() {
       <header className="border-b border-neutral-200 dark:border-neutral-800 pb-6 sm:pb-8 space-y-3">
         <div className="flex items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400">
           <Layers className="w-4 h-4" />
-          <span>Special Series | പ്രത്യേക പരമ്പരകൾ</span>
+          <span>Special Series</span>
         </div>
         <h1 className="font-serif text-3xl sm:text-5xl font-bold text-neutral-900 dark:text-neutral-50 tracking-tight break-words">
-          സമഗ്ര അന്വേഷണ പരമ്പരകൾ
+          Investigative Series &amp; Long-Form Columns
         </h1>
         <p className="text-neutral-600 dark:text-neutral-400 text-sm sm:text-base max-w-3xl leading-relaxed">
-          ചരിത്രം, രാഷ്ട്രീയം, കുടിയേറ്റം, സാഹിത്യം എന്നിവയെ മുൻനിർത്തി കേരളത്തിലെയും ഇന്ത്യയിലെയും പ്രമുഖ ചിന്തകരും എഴുത്തുകാരും തയ്യാറാക്കുന്ന ദീർഘകാല പരമ്പരകൾ.
+          Extended serialized investigations and literary works authored by prominent writers and thinkers across history, politics, ecology, and culture.
         </p>
       </header>
 
@@ -100,7 +100,7 @@ export default function SeriesIndexPage() {
                 href={`/series/${series.slug}`}
                 className="inline-flex items-center justify-between w-full px-4 py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 hover:bg-brand-600 hover:text-white dark:hover:bg-brand-600 text-neutral-900 dark:text-neutral-100 text-sm font-bold transition-colors group-hover:bg-brand-600 group-hover:text-white"
               >
-                <span>പരമ്പര പൂർണ്ണമായി വായിക്കുക</span>
+                <span>Read Full Series</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>

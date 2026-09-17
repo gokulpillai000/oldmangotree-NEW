@@ -18,10 +18,10 @@ export default function MagazineArchivesPage() {
           <BookOpen className="w-4 h-4" /> Webzine Packet Archives
         </div>
         <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-900 dark:text-neutral-50">
-          വെബ്‌സീൻ പാക്കറ്റുകൾ
+          Webzine Issues &amp; Packets
         </h1>
         <p className="text-neutral-600 dark:text-neutral-400 text-sm sm:text-base max-w-2xl leading-relaxed">
-          ഡിജിറ്റൽ ആനുകാലിക പാക്കറ്റുകളുടെ സമഗ്ര ശേഖരം. ഓരോ ലക്കത്തിലും ഗഹനമായ രാഷ്ട്രീയ, സാംസ്കാരിക, സാമൂഹിക വിഷയങ്ങളുടെ ആഴത്തിലുള്ള വായനകൾ.
+          Comprehensive collection of digital webzine packets. In-depth reading on political, cultural, and social topics in every curated issue.
         </p>
       </header>
 

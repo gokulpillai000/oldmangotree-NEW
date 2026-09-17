@@ -21,92 +21,92 @@ interface VideoItem {
 const videosData: VideoItem[] = [
   {
     id: 'vismayam-paleri-doc',
-    title: 'വിസ്മയം പലേരി: ടി.പി. രാജീവന്റെ ഓർമ്മകളിലൂടെ പലേരിയുടെ ജീവചരിത്രം',
-    excerpt: 'ഒരു നാടിന്റെ സാംസ്കാരിക-രാഷ്ട്രീയ ചരിത്രവും സാഹിത്യ പശ്ചാത്തലവും അപഗ്രഥിക്കുന്ന പ്രത്യേക വീഡിയോ പ്രോഗ്രാം.',
+    title: 'The Marvel of Paleri: Life and Memory in Literary Landscapes',
+    excerpt: 'A retrospective documentary exploring cultural and political history through local literature.',
     youtubeId: 'dQw4w9WgXcQ',
-    playlist: 'വിസ്മയം പലേരി',
+    playlist: 'Documentaries',
     category: 'Literature',
     publishedAt: '2026-09-08T10:00:00.000Z',
     duration: '24:18',
-    speaker: 'ടി.പി. രാജീവൻ / എഡിറ്റോറിയൽ ഡെസ്ക്',
+    speaker: 'Editorial Desk',
     coverImage: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&q=80&w=800',
     isFeatured: true,
   },
   {
     id: 'gandhi-murder-investigation-talk',
-    title: 'ഗാന്ധി വധത്തിന്റെ സമഗ്ര ചരിത്രം: ആസൂത്രണവും വിചാരണയും',
-    excerpt: 'കെ.ടി. കുഞ്ഞിക്കണ്ണൻ നയിക്കുന്ന സമഗ്ര ചരിത്രാന്വേഷണ ചർച്ച.',
+    title: 'The Anatomy of an Assassination: Historical Retrospective & Inquiry',
+    excerpt: 'An investigative historical dialogue examining archival records and public trials.',
     youtubeId: 'ysz5S6PUM-U',
-    playlist: 'ഗാന്ധി വധത്തിന്റെ സമഗ്ര ചരിത്രം',
+    playlist: 'Historical Inquiries',
     category: 'History',
     publishedAt: '2026-09-06T15:00:00.000Z',
     duration: '38:42',
-    speaker: 'കെ.ടി. കുഞ്ഞിക്കണ്ണൻ, മനില സി. മോഹൻ',
+    speaker: 'K. T. Kunhikannan & Editorial Panel',
     coverImage: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=800',
     isFeatured: true,
   },
   {
     id: 'hindutva-india-panel',
-    title: 'ഹിന്ദുത്വ ഇന്ത്യയുടെ പ്രതിഷ്ഠാപനം: ഭരണഘടനാ മൂല്യങ്ങൾ നേരിടുന്ന വെല്ലുവിളി',
-    excerpt: 'ഇന്ത്യൻ ജനാധിപത്യം നേരിടുന്ന പ്രത്യയശാസ്ത്രപരമായ പ്രതിസന്ധികളെക്കുറിച്ചുള്ള പാനൽ ചർച്ച.',
+    title: 'Constitutional Values in Contemporary Times: An Editorial Forum',
+    excerpt: 'A critical panel dialogue exploring democratic institutions, civic freedoms, and modern challenges.',
     youtubeId: 'jNQXAC9IVRw',
-    playlist: 'ഹിന്ദുത്വ ഇന്ത്യയുടെ പ്രതിഷ്ഠാപനം',
+    playlist: 'Democratic Debates',
     category: 'Politics',
     publishedAt: '2026-09-04T12:00:00.000Z',
     duration: '45:10',
-    speaker: 'ദാമോദർ പ്രസാദ്, കെ. കണ്ണൻ',
+    speaker: 'Damodar Prasad & K. Kannan',
     coverImage: 'https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&q=80&w=800',
     isFeatured: false,
   },
   {
     id: 'venu-cinema-stories',
-    title: 'വേണു പറയുന്ന സിനിമാ കഥകള്‍: മലയാള സിനിമയുടെ ക്യാമറക്കണ്ണുകൾ',
-    excerpt: 'പ്രശസ്ത ഛായാഗ്രാഹകൻ വേണു തന്റെ ചലച്ചിത്ര അനുഭവങ്ങളും സൗന്ദര്യശാസ്ത്രവും പങ്കുവെക്കുന്നു.',
+    title: 'Behind the Lens: The Aesthetics and Craft of Cinematography',
+    excerpt: 'Veteran cinematographer Venu reflects on visual storytelling and cinematic composition.',
     youtubeId: 'kJQP7kiw5Fk',
-    playlist: 'വേണു പറയുന്ന സിനിമാ കഥകള്‍',
+    playlist: 'Cinema Conversations',
     category: 'Cinema',
     publishedAt: '2026-09-02T16:30:00.000Z',
     duration: '32:05',
-    speaker: 'വേണു (ഛായാഗ്രാഹകൻ / സംവിധായകൻ)',
+    speaker: 'Venu (Cinematographer / Director)',
     coverImage: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&q=80&w=800',
     isFeatured: false,
   },
   {
     id: 'western-ghats-ecology-doc',
-    title: 'പശ്ചിമഘട്ടവും കേരളത്തിലെ പ്രകൃതിദുരന്തങ്ങളും: ഡോക്യുമെന്ററി അന്വേഷണം',
-    excerpt: 'കാലാവസ്ഥാ വ്യതിയാനവും ഡാം മാനേജ്‌മെന്റും പരിശോധിക്കുന്ന ഗ്രൗണ്ട് റിപ്പോർട്ട്.',
+    title: 'The Western Ghats & Climate Vulnerability: Ground Reality',
+    excerpt: 'An ecological documentary analyzing rain patterns, ecological preservation, and disaster management.',
     youtubeId: '9bZkp7q19f0',
     playlist: 'Documentaries',
     category: 'Environment',
     publishedAt: '2026-08-30T14:00:00.000Z',
     duration: '28:50',
-    speaker: 'എസ്. പി. രവി',
+    speaker: 'S. P. Ravi',
     coverImage: 'https://images.unsplash.com/photo-1511497584788-87676104235f?auto=format&fit=crop&q=80&w=800',
     isFeatured: false,
   },
   {
     id: 'grandma-stories-oral-history',
-    title: 'ഗ്രാന്‍മ സ്റ്റോറീസ്: തലമുറകൾ കൈമാറിയ നാട്ടുപാട്ടുകളും കഥകളും',
-    excerpt: 'മുത്തശ്ശിമാർ ഓർത്തെടുക്കുന്ന വാമൊഴി ചരിത്രവും സ്ത്രീ അനുഭവങ്ങളും.',
+    title: 'Folk Memory & Oral Histories: Voices Across Generations',
+    excerpt: 'Documenting village folklore, oral histories, and matrilineal accounts across eras.',
     youtubeId: 'L_LUpnjgPso',
-    playlist: 'ഗ്രാന്‍മ സ്റ്റോറീസ്',
+    playlist: 'Oral Histories',
     category: 'Culture',
     publishedAt: '2026-08-25T11:00:00.000Z',
     duration: '19:15',
-    speaker: 'എഡിറ്റോറിയൽ ടീം',
+    speaker: 'Editorial Team',
     coverImage: 'https://images.unsplash.com/photo-1516541196182-6bdb0516ed27?auto=format&fit=crop&q=80&w=800',
     isFeatured: false,
   },
   {
     id: 'editors-assembly-saniv-bhatt',
-    title: 'മോദിയുടെ ജയിൽരാജ്യത്തെ 2,923 ദിവസങ്ങൾ: എഡിറ്റേഴ്സ് അസംബ്ലി ചർച്ച',
-    excerpt: 'സഞ്ജീവ് ഭട്ടിന്റെ തടവറയും ഇന്ത്യൻ നിയമവ്യവസ്ഥയുടെ സമകാലിക സാഹചര്യങ്ങളും.',
+    title: 'Justice, Liberties & The Legal Paradigm: An Editorial Discussion',
+    excerpt: 'A dialogue dissecting criminal jurisprudence and judicial reform in the modern republic.',
     youtubeId: 'ZXsQAXx_ao0',
-    playlist: 'Polarized Politics',
+    playlist: 'Democratic Debates',
     category: 'Politics',
     publishedAt: '2026-08-20T18:00:00.000Z',
     duration: '41:22',
-    speaker: 'മനില സി. മോഹൻ, കെ. കണ്ണൻ, ടി. ശ്രീജിത്ത്',
+    speaker: 'Editorial Collective',
     coverImage: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=800',
     isFeatured: false,
   },
@@ -129,13 +129,13 @@ export default function VideosPage() {
       <header className="border-b border-neutral-200 dark:border-neutral-800 pb-6 space-y-2">
         <div className="flex items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400">
           <Film className="w-4 h-4" />
-          <span>Videos &amp; Documentaries | വീഡിയോകള്‍</span>
+          <span>Videos &amp; Documentaries</span>
         </div>
         <h1 className="font-serif text-2xl sm:text-4xl lg:text-5xl font-bold text-neutral-900 dark:text-neutral-50 tracking-tight break-words">
-          വീഡിയോ എസ്സേകളും സംവാദങ്ങളും
+          Video Essays, Documentaries &amp; Discussions
         </h1>
         <p className="text-neutral-600 dark:text-neutral-400 text-sm sm:text-base max-w-3xl leading-relaxed">
-          ഡോക്യുമെന്ററികൾ, എഡിറ്റോറിയൽ ചർച്ചകൾ, സിനിമ വിശകലനങ്ങൾ, വാമൊഴി ചരിത്രങ്ങൾ എന്നിവ ഉൾക്കൊള്ളുന്ന സമഗ്ര വീഡിയോ പ്ലാറ്റ്‌ഫോം.
+          A curated visual platform featuring in-depth documentaries, editorial discussions, cinematic analyses, and oral histories.
         </p>
       </header>
 
@@ -196,7 +196,7 @@ export default function VideosPage() {
         <div className="flex items-center justify-between">
           <h3 className="font-serif text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-50 flex items-center gap-2">
             <Film className="w-5 h-5 text-brand-600 shrink-0" />
-            <span>പ്ലേലിസ്റ്റുകൾ (Playlists &amp; Series)</span>
+            <span>Playlists &amp; Series</span>
           </h3>
           <span className="text-xs text-neutral-500 font-bold shrink-0">
             {filteredVideos.length} Videos
@@ -214,7 +214,7 @@ export default function VideosPage() {
                   : 'bg-neutral-100 dark:bg-neutral-800/80 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700'
               }`}
             >
-              {pl === 'All' ? 'എല്ലാ വീഡിയോകളും (All)' : pl}
+              {pl === 'All' ? 'All Videos' : pl}
             </button>
           ))}
         </div>

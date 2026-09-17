@@ -1,20 +1,26 @@
 /**
  * Tag-to-Category Auto Mapper
- * Maps user-selected article tags to official webzine categories (politics, literature, sports)
+ * Maps user-selected article tags to official webzine categories:
+ * cinema, sports, politics, arts-culture, literature, miscellaneous
  */
 
 export const POPULAR_TAG_SUGGESTIONS = [
-  'Kerala',
+  'Cinema',
+  'Sports',
   'Politics',
+  'Arts & Culture',
+  'Literature',
+  'Book Review',
+  'Short Stories',
+  'Miscellaneous',
+  'Kerala',
   'Elections',
   'Society',
-  'Literature',
   'Culture',
   'Ecology',
-  'Environment',
-  'Gender',
-  'Sports',
   'Football',
+  'Cricket',
+  'Film Studies',
 ];
 
 export function determineCategoryFromTags(tags: string[]): string {
@@ -22,27 +28,40 @@ export function determineCategoryFromTags(tags: string[]): string {
 
   const normalizedTags = tags.map((t) => t.toLowerCase().trim());
 
-  const sportsKeywords = ['sports', 'football', 'cricket', 'games', 'athlete', 'messi', 'match'];
-  const literatureKeywords = ['literature', 'culture', 'ecology', 'environment', 'books', 'gender', 'arts', 'poetry', 'history', 'dam', 'river'];
-  const politicsKeywords = ['politics', 'kerala', 'elections', 'society', 'government', 'policy', 'state', 'rights'];
+  const cinemaKeywords = ['cinema', 'film', 'movie', 'director', 'screenplay', 'actor', 'hollywood', 'mollywood', 'theatre-film'];
+  const sportsKeywords = ['sports', 'football', 'cricket', 'games', 'athlete', 'messi', 'match', 'olympics', 'fifa'];
+  const politicsKeywords = ['politics', 'kerala', 'elections', 'society', 'government', 'policy', 'state', 'rights', 'democracy'];
+  const artsKeywords = ['arts', 'art', 'culture', 'heritage', 'music', 'visual-arts', 'sculpture', 'painting', 'folk', 'dance', 'drama'];
+  const literatureKeywords = ['literature', 'books', 'book review', 'short stories', 'fiction', 'novel', 'poetry', 'essay', 'author', 'writing'];
+  const miscKeywords = ['miscellaneous', 'philosophy', 'commentary', 'satire', 'opinion', 'reflection', 'perspective'];
 
-  // Count keyword hits
-  let sportsHits = 0;
-  let literatureHits = 0;
-  let politicsHits = 0;
+  const scores: Record<string, number> = {
+    cinema: 0,
+    sports: 0,
+    politics: 0,
+    'arts-culture': 0,
+    literature: 0,
+    miscellaneous: 0,
+  };
 
   for (const tag of normalizedTags) {
-    if (sportsKeywords.some((k) => tag.includes(k))) sportsHits++;
-    if (literatureKeywords.some((k) => tag.includes(k))) literatureHits++;
-    if (politicsKeywords.some((k) => tag.includes(k))) politicsHits++;
+    if (cinemaKeywords.some((k) => tag.includes(k))) scores.cinema++;
+    if (sportsKeywords.some((k) => tag.includes(k))) scores.sports++;
+    if (politicsKeywords.some((k) => tag.includes(k))) scores.politics++;
+    if (artsKeywords.some((k) => tag.includes(k))) scores['arts-culture']++;
+    if (literatureKeywords.some((k) => tag.includes(k))) scores.literature++;
+    if (miscKeywords.some((k) => tag.includes(k))) scores.miscellaneous++;
   }
 
-  if (sportsHits > literatureHits && sportsHits > politicsHits) {
-    return 'sports';
-  }
-  if (literatureHits > sportsHits && literatureHits > politicsHits) {
-    return 'literature';
+  let bestCategory = 'politics';
+  let maxHits = 0;
+
+  for (const [cat, count] of Object.entries(scores)) {
+    if (count > maxHits) {
+      maxHits = count;
+      bestCategory = cat;
+    }
   }
 
-  return 'politics';
+  return bestCategory;
 }

@@ -405,7 +405,7 @@ export default function EditorialDeskPage() {
             Editorial Desk Access
           </h2>
           <p className="text-xs text-neutral-500 dark:text-neutral-400">
-            എഡിറ്റോറിയൽ ഡെസ്കിലേക്ക് പ്രവേശിക്കുക
+            Sign in to access editorial tools and content management.
           </p>
         </div>
 
@@ -418,7 +418,7 @@ export default function EditorialDeskPage() {
         {/* 1-Tap Preset Sign-In Buttons */}
         <div className="space-y-2 pt-1">
           <label className="text-[11px] font-bold uppercase tracking-wider text-neutral-500 block">
-            1-Tap Editorial Sign In (പ്രസ്സ് ലോഗിൻ):
+            1-Tap Editorial Sign In:
           </label>
           <div className="grid grid-cols-1 gap-2">
             <button
@@ -518,7 +518,7 @@ export default function EditorialDeskPage() {
             href="/member"
             className="w-full py-3 rounded-xl bg-brand-700 hover:bg-brand-600 text-white font-bold text-xs sm:text-sm shadow transition-colors flex items-center justify-center gap-2"
           >
-            <span>Go to Member Lounge (വായനമുറി)</span>
+            <span>Go to Member Lounge</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
           <button
@@ -545,7 +545,7 @@ export default function EditorialDeskPage() {
         <div className="space-y-1">
           <div className="flex items-center gap-2">
             <span className="px-3 py-1 rounded-full text-xs font-serif font-bold uppercase tracking-wider bg-brand-50 dark:bg-brand-950/60 text-brand-800 dark:text-brand-300 border border-brand-200 dark:border-brand-900 flex items-center gap-1.5">
-              <PenTool className="w-3.5 h-3.5 text-brand-700 dark:text-brand-400" /> Editorial Desk / ഡെസ്ക്
+              <PenTool className="w-3.5 h-3.5 text-brand-700 dark:text-brand-400" /> Editorial Desk
             </span>
             <span className="text-xs text-neutral-500">Editor: {session.name}</span>
           </div>
@@ -681,12 +681,12 @@ export default function EditorialDeskPage() {
               {/* Article Title */}
               <div className="space-y-1">
                 <label className="text-xs font-bold uppercase tracking-wider text-neutral-700 dark:text-neutral-300">
-                  Article Title (ലേഖനത്തിന്റെ തലക്കെട്ട്) *
+                  Article Title *
                 </label>
                 <input
                   type="text"
                   required
-                  placeholder="e.g. വികസന നയങ്ങളും ആധുനിക കേരളീയ ചിന്തകളും"
+                  placeholder="e.g. Modern Development Policies and Ecological Future"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   className="w-full min-w-0 px-4 py-3 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 text-base font-serif font-bold text-neutral-900 dark:text-neutral-100 focus:outline-none focus:ring-2 focus:ring-brand-500"
@@ -696,7 +696,7 @@ export default function EditorialDeskPage() {
               {/* Excerpt / Summary */}
               <div className="space-y-1">
                 <label className="text-xs font-bold uppercase tracking-wider text-neutral-700 dark:text-neutral-300">
-                  Article Summary / Excerpt (ആമുഖ വിവരണം)
+                  Article Summary / Excerpt
                 </label>
                 <textarea
                   rows={2}
@@ -712,7 +712,7 @@ export default function EditorialDeskPage() {
                 <div className="flex items-center justify-between">
                   <label className="text-xs font-bold uppercase tracking-wider text-neutral-700 dark:text-neutral-300 flex items-center gap-1.5">
                     <Tag className="w-3.5 h-3.5 text-brand-600" />
-                    <span>Topic Tags (വിഷയങ്ങൾ)</span>
+                    <span>Topic Tags</span>
                   </label>
                   <span className="text-xs font-bold text-brand-700 dark:text-brand-400 bg-brand-50 dark:bg-brand-950 px-2.5 py-1 rounded-full border border-brand-200 dark:border-brand-900">
                     Category: {autoCategory.toUpperCase()}
@@ -826,7 +826,7 @@ export default function EditorialDeskPage() {
                   className="flex items-center gap-2 px-6 py-3 rounded-xl bg-brand-700 hover:bg-brand-600 text-white font-bold text-sm shadow transition-all active:scale-[0.99]"
                 >
                   <Send className="w-4 h-4" />
-                  <span>{publishing ? 'Saving...' : editingSlug ? 'Update Article (മാറ്റങ്ങൾ വരുത്തുക)' : 'Publish Story (പ്രസിദ്ധീകരിക്കുക)'}</span>
+                  <span>{publishing ? 'Saving...' : editingSlug ? 'Update Article' : 'Publish Story'}</span>
                 </button>
               </div>
             </div>
@@ -927,7 +927,7 @@ export default function EditorialDeskPage() {
           <form onSubmit={handleSavePacket} className="bg-paper-card dark:bg-paper-cardDark p-4 sm:p-7 rounded-2xl border border-neutral-200 dark:border-neutral-800 shadow-xl space-y-4">
             <h2 className="font-serif text-lg font-bold text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
               <Layers className="w-5 h-5 text-brand-600" />
-              <span>Create or Update Issue Packet (വെബ്സീൻ പാക്കറ്റ്)</span>
+              <span>Create or Update Issue Packet</span>
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">

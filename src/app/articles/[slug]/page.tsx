@@ -49,7 +49,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             href="/"
             className="inline-flex items-center gap-1.5 text-xs font-semibold text-neutral-500 hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
           >
-            <ArrowLeft className="w-4 h-4" /> തിരികെ വെബ്‌സീനിലേക്ക് / Back to Webzine
+            <ArrowLeft className="w-4 h-4" /> Back to Webzine
           </Link>
 
           {article.webzineIssue && (
@@ -198,7 +198,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           <section className="space-y-4 pt-8 border-t border-neutral-200 dark:border-neutral-800">
             <div className="flex items-center justify-between">
               <h2 className="font-serif text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-50 flex items-center gap-2">
-                തുടർ വായനകൾ / More Stories
+                More Stories
               </h2>
               {article.webzineIssue && (
                 <Link

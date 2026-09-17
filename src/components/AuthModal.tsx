@@ -164,7 +164,7 @@ export function AuthModal({ isOpen, onClose, session, onSessionChange }: AuthMod
                   className="w-full py-3.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white font-bold text-sm shadow transition-colors flex items-center justify-center gap-2"
                 >
                   <Sparkles className="w-4 h-4" />
-                  <span>Go to Member Space (ലൗഞ്ച്)</span>
+                  <span>Go to Member Space</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               )}
@@ -235,7 +235,7 @@ export function AuthModal({ isOpen, onClose, session, onSessionChange }: AuthMod
                   className="w-full py-3 rounded-xl bg-amber-600 hover:bg-amber-500 text-white font-bold text-sm shadow transition-colors flex items-center justify-center gap-2"
                 >
                   <Sparkles className="w-4 h-4" />
-                  <span>Open Member Space (ലൗഞ്ച്)</span>
+                  <span>Open Member Space</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               )}
@@ -267,7 +267,7 @@ export function AuthModal({ isOpen, onClose, session, onSessionChange }: AuthMod
                 }`}
               >
                 <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-                <span>Subscriber / വായനമുറി</span>
+                <span>Subscriber</span>
               </button>
               <button
                 type="button"
@@ -282,7 +282,7 @@ export function AuthModal({ isOpen, onClose, session, onSessionChange }: AuthMod
                 }`}
               >
                 <PenTool className="w-3.5 h-3.5 text-brand-600" />
-                <span>Editorial Desk / പ്രസ്സ്</span>
+                <span>Editorial Desk</span>
               </button>
             </div>
 
@@ -320,8 +320,8 @@ export function AuthModal({ isOpen, onClose, session, onSessionChange }: AuthMod
               <div className="p-3 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 space-y-2">
                 <p className="text-[11px] font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
                   {portalMode === 'subscriber'
-                    ? '1-Tap Subscriber Sign In (ടെസ്റ്റ് ലോഗിൻ):'
-                    : '1-Tap Editorial Sign In (ഡെസ്ക് ലോഗിൻ):'}
+                    ? '1-Tap Subscriber Sign In:'
+                    : '1-Tap Editorial Sign In:'}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-2">
                   {portalMode === 'subscriber' ? (

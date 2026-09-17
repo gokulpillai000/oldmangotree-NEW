@@ -31,7 +31,7 @@ export default function TagPage({ params }: TagPageProps) {
           className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-neutral-600 dark:text-neutral-400 hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
-          <span>തിരികെ പ്രധാന പേജിലേക്ക് (Home)</span>
+          <span>Back to Home</span>
         </Link>
       </div>
 
@@ -44,13 +44,13 @@ export default function TagPage({ params }: TagPageProps) {
           #{rawTag}
         </h1>
         <p className="text-neutral-600 dark:text-neutral-400 text-sm sm:text-base max-w-2xl leading-relaxed">
-          #{rawTag} എന്ന വിഷയത്തിൽ പ്രസിദ്ധീകരിച്ച എല്ലാ ലേഖനങ്ങളും വിശകലനങ്ങളും.
+          All articles, essays, and stories published under #{rawTag}.
         </p>
       </header>
 
       {articles.length === 0 ? (
         <div className="py-12 text-center text-neutral-500">
-          ഈ ടാഗിൽ ലേഖനങ്ങൾ ലഭ്യമല്ല.
+          No articles found for this tag.
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

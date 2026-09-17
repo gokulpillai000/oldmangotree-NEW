@@ -80,10 +80,10 @@ export function MyLibraryModal({ isOpen, onClose }: MyLibraryModalProps) {
             </div>
             <div className="min-w-0">
               <h2 className="font-serif text-base sm:text-xl font-bold text-neutral-900 dark:text-neutral-50 truncate">
-                എന്റെ ലൈബ്രറി | My Library
+                My Library
               </h2>
               <p className="text-xs text-neutral-500 dark:text-neutral-400 truncate">
-                സൂക്ഷിച്ച ലേഖനങ്ങളും വായനാ ചരിത്രവും
+                Your saved articles, reading history &amp; letters
               </p>
             </div>
           </div>
@@ -145,10 +145,10 @@ export function MyLibraryModal({ isOpen, onClose }: MyLibraryModalProps) {
                     <Bookmark className="w-6 h-6" />
                   </div>
                   <p className="font-serif text-base font-bold text-neutral-800 dark:text-neutral-200">
-                    ലേഖനങ്ങളൊന്നും സൂക്ഷിച്ചിട്ടില്ല
+                    No saved articles yet
                   </p>
                   <p className="text-xs text-neutral-500 dark:text-neutral-400 max-w-sm mx-auto">
-                    ലേഖനങ്ങൾ വായിക്കുമ്പോൾ ഉള്ള ബുക്ക്മാർക്ക് (Bookmark) ചിഹ്നം അമർത്തി ഇവിടെ പിന്നീട് വായിക്കാനായി സൂക്ഷിക്കാം.
+                    Click the bookmark icon on any article to save it here for future reading.
                   </p>
                 </div>
               ) : (
@@ -208,10 +208,10 @@ export function MyLibraryModal({ isOpen, onClose }: MyLibraryModalProps) {
                     <Clock className="w-6 h-6" />
                   </div>
                   <p className="font-serif text-base font-bold text-neutral-800 dark:text-neutral-200">
-                    വായനാ ചരിത്രം ലഭ്യമല്ല
+                    No reading history yet
                   </p>
                   <p className="text-xs text-neutral-500 dark:text-neutral-400 max-w-sm mx-auto">
-                    നിങ്ങൾ വായിക്കുന്ന ലേഖനങ്ങൾ സ്വയമേവ ഇവിടെ രേഖപ്പെടുത്തപ്പെടും.
+                    Articles you read on this device will automatically appear here.
                   </p>
                 </div>
               ) : (
@@ -263,10 +263,10 @@ export function MyLibraryModal({ isOpen, onClose }: MyLibraryModalProps) {
                     <Mail className="w-6 h-6" />
                   </div>
                   <p className="font-serif text-base font-bold text-neutral-800 dark:text-neutral-200">
-                    കത്തുകളൊന്നും അയച്ചിട്ടില്ല
+                    No letters submitted yet
                   </p>
                   <p className="text-xs text-neutral-500 dark:text-neutral-400 max-w-sm mx-auto">
-                    ലേഖനങ്ങൾ വായിക്കുമ്പോൾ &ldquo;Letter to Editor&rdquo; ബട്ടൺ വഴി നിങ്ങളുടെ പ്രതികരണം അയക്കാം.
+                    Click the &ldquo;Letter to Editor&rdquo; button on any article to share your perspective with our editorial team.
                   </p>
                 </div>
               ) : (

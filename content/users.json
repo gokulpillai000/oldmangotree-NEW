@@ -28,5 +28,15 @@
     "name": "Reader",
     "passwordHash": "reader123",
     "role": "publisher"
+  },
+  "subscriber@oldmangotree.media": {
+    "name": "Rahul Menon",
+    "passwordHash": "subscriber123",
+    "role": "reader"
+  },
+  "nahas@gmail.com": {
+    "name": "Nahas",
+    "passwordHash": "nahas123",
+    "role": "reader"
   }
 }

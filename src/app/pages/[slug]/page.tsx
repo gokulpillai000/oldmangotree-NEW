@@ -32,7 +32,7 @@ export default async function StaticInfoPage({ params }: StaticPageProps) {
           className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-neutral-600 dark:text-neutral-400 hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
-          <span>തിരികെ പ്രധാന പേജിലേക്ക് (Home)</span>
+          <span>Back to Home</span>
         </Link>
       </div>
 

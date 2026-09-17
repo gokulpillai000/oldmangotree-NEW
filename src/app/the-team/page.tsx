@@ -4,8 +4,8 @@ import { getTeamMembers } from '@/lib/content';
 import { Users, Mail } from 'lucide-react';
 
 export const metadata = {
-  title: 'എഡിറ്റോറിയൽ ടീം | The Team - OldmanGoTree',
-  description: 'Editorial board, contributing editors, and writers of OldmanGoTree.',
+  title: 'The Team — Old Mango Tree',
+  description: 'Editorial board, contributing editors, and writers of Old Mango Tree.',
 };
 
 export default function TheTeamPage() {
@@ -16,13 +16,13 @@ export default function TheTeamPage() {
       <header className="text-center space-y-3 max-w-3xl mx-auto pt-2 sm:pt-4">
         <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-950/60 px-3.5 py-1.5 rounded-full border border-brand-200 dark:border-brand-800">
           <Users className="w-4 h-4" />
-          <span>Editorial Collective | എഡിറ്റോറിയൽ സമിതി</span>
+          <span>Editorial Collective</span>
         </div>
         <h1 className="font-serif text-3xl sm:text-5xl font-bold text-neutral-900 dark:text-neutral-50 tracking-tight break-words">
-          ഓൾഡ്മാൻഗോട്രീ ടീം
+          Old Mango Tree Editorial Team
         </h1>
         <p className="text-neutral-600 dark:text-neutral-400 text-sm sm:text-base leading-relaxed">
-          സ്വതന്ത്ര മാധ്യമപ്രവർത്തനത്തിനും ആഴത്തിലുള്ള ചിന്തയ്ക്കും നേതൃത്വം നൽകുന്ന എഡിറ്റർമാരും കോളമിസ്റ്റുകളും.
+          Editors, columnists, and investigative writers leading independent journalism, literature, and deep thought.
         </p>
       </header>
 

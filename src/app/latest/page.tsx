@@ -6,7 +6,7 @@ import { formatDate } from '@/lib/format';
 import { Newspaper, Clock, Lock, ArrowRight } from 'lucide-react';
 
 export const metadata = {
-  title: 'ഏറ്റവും പുതിയവ | Latest Stories - OldmanGoTree',
+  title: 'Latest Stories — Old Mango Tree',
   description: 'Chronological feed of all latest investigative journalism, podcasts, and essays.',
 };
 
@@ -19,19 +19,19 @@ export default function LatestPage() {
       <header className="border-b border-neutral-200 dark:border-neutral-800 pb-6 space-y-2">
         <div className="flex items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400">
           <Newspaper className="w-4 h-4" />
-          <span>Latest Feed | ഏറ്റവും പുതിയവ</span>
+          <span>Latest Feed</span>
         </div>
         <h1 className="font-serif text-3xl sm:text-5xl font-bold text-neutral-900 dark:text-neutral-50 tracking-tight break-words">
-          സമകാലിക ലേഖനങ്ങളും വാർത്താ വിശകലനങ്ങളും
+          Contemporary Articles &amp; News Analysis
         </h1>
         <p className="text-neutral-600 dark:text-neutral-400 text-sm sm:text-base max-w-2xl leading-relaxed">
-          OldmanGoTree പ്രസിദ്ധീകരിക്കുന്ന സമഗ്രമായ റിപ്പോർട്ടുകൾ, സാംസ്കാരിക ലേഖനങ്ങൾ, അഭിമുഖങ്ങൾ എന്നിവയുടെ കാലഗണനാ ക്രമത്തിലുള്ള ശേഖരം.
+          Chronological archive of all reports, investigative essays, cultural perspectives, and interviews published by Old Mango Tree.
         </p>
 
         {/* Category Quick Filter Chips */}
         <div className="w-full min-w-0 flex items-center gap-2 overflow-x-auto scrollbar-none pt-4">
           <span className="text-xs font-bold uppercase tracking-wider text-neutral-400 shrink-0">
-            വിഭാഗങ്ങൾ:
+            Sections:
           </span>
           <Link
             href="/latest"
@@ -53,7 +53,7 @@ export default function LatestPage() {
 
       {articles.length === 0 ? (
         <div className="py-12 text-center text-neutral-500">
-          ലേഖനങ്ങൾ ലഭ്യമല്ല.
+          No articles available yet.
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

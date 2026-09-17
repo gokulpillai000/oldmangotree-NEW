@@ -127,7 +127,7 @@ export default function MemberSpacePage() {
             <User className="w-6 h-6" />
           </div>
           <h1 className="font-serif text-2xl font-bold text-neutral-900 dark:text-neutral-50">
-            Subscriber Lounge | വായനമുറി
+            Subscriber Lounge
           </h1>
           <p className="text-xs text-neutral-500 dark:text-neutral-400">
             Sign in to access your personal reading list, letters, and member benefits.
@@ -231,7 +231,7 @@ export default function MemberSpacePage() {
           <div className="space-y-1.5">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-900/60 text-brand-300 text-xs font-bold uppercase tracking-wider border border-brand-800">
               <span className="w-2 h-2 rounded-full bg-brand-400 animate-pulse"></span>
-              <span>Active Patron • ഡിജിറ്റൽ വരിക്കാരൻ</span>
+              <span>Active Patron • Digital Subscriber</span>
             </div>
             <h1 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight break-words">
               Welcome, {session.name}
@@ -371,7 +371,7 @@ export default function MemberSpacePage() {
           <div className="flex items-center gap-2">
             <BookOpen className="w-5 h-5 text-brand-700 dark:text-brand-400" />
             <h2 className="font-serif text-base sm:text-lg font-bold text-neutral-900 dark:text-neutral-100">
-              Patron Webzine Issues (മുഴുവൻ ലക്കങ്ങൾ)
+              Patron Webzine Issues
             </h2>
           </div>
           <span className="text-xs font-bold text-brand-600 bg-brand-50 dark:bg-brand-950 px-2.5 py-1 rounded-full">
@@ -389,7 +389,7 @@ export default function MemberSpacePage() {
               PACKET 2 — Modern Political &amp; Cultural Debates
             </h3>
             <p className="text-xs text-neutral-500 mt-1 line-clamp-2">
-              ആഴത്തിലുള്ള രാഷ്ട്രീയ, പാരിസ്ഥിതിക, സാംസ്കാരിക വിശകലനങ്ങളും ലേഖനങ്ങളും.
+              In-depth political, environmental, and cultural discourses and analyses.
             </p>
             <span className="inline-flex items-center gap-1 text-xs font-bold text-brand-600 mt-3">
               <span>Read Full Packet</span>
@@ -406,7 +406,7 @@ export default function MemberSpacePage() {
               PACKET 1 — Sports Culture &amp; Global Perspectives
             </h3>
             <p className="text-xs text-neutral-500 mt-1 line-clamp-2">
-              ഫുട്ബോളിന്റെ ആഗോള സാംസ്കാരിക വായനകളും കായിക വിശകലനങ്ങളും.
+              Global cultural readings of football, sporting philosophy, and athletic chronicles.
             </p>
             <span className="inline-flex items-center gap-1 text-xs font-bold text-brand-600 mt-3">
               <span>Read Full Packet</span>
