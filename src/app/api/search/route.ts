@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getAllArticles } from '@/lib/content';
 
-export const dynamic = 'force-dynamic';
 
 export async function GET() {
   try {

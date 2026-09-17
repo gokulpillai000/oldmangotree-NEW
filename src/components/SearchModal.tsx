@@ -34,7 +34,8 @@ export function SearchModal({ isOpen, onClose, initialQuery = '' }: SearchModalP
       setQuery(initialQuery);
       if (articles.length === 0) {
         setIsLoading(true);
-        fetch('/api/search')
+        const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+        fetch(`${basePath}/api/search`)
           .then((res) => res.json())
           .then((data) => {
             if (data?.articles) {
