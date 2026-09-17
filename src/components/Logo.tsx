@@ -12,6 +12,9 @@ export const Logo: React.FC<LogoProps> = ({
   className = '',
   showTagline = true,
 }) => {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+  const logoSrc = `${basePath}/images/logo-oldmangotree.jpg`;
+
   // Reference variant: Square box with white border + 3-line stacked brand name (old / mango / tree)
   if (variant === 'reference') {
     return (
@@ -19,7 +22,7 @@ export const Logo: React.FC<LogoProps> = ({
         {/* Hanging Square Logo Box */}
         <div className="relative w-14 h-14 sm:w-20 sm:h-20 md:w-[86px] md:h-[86px] bg-[#fdf9ee] border-2 sm:border-[3px] border-[#E27A2B] shadow-[0_6px_16px_rgba(0,0,0,0.35)] translate-y-2 sm:translate-y-3.5 z-30 shrink-0 flex items-center justify-center p-0.5 group-hover:scale-105 transition-transform duration-200 overflow-hidden">
           <Image
-            src="/images/logo-oldmangotree.jpg"
+            src={logoSrc}
             alt="Old Mango Tree"
             fill
             className="object-contain"
@@ -44,7 +47,7 @@ export const Logo: React.FC<LogoProps> = ({
     return (
       <div className={`relative inline-block overflow-hidden rounded-2xl ${className}`}>
         <Image
-          src="/images/logo-oldmangotree.jpg"
+          src={logoSrc}
           alt="Old Mango Tree Logo"
           width={220}
           height={220}
@@ -60,7 +63,7 @@ export const Logo: React.FC<LogoProps> = ({
     return (
       <div className={`relative inline-flex items-center justify-center overflow-hidden rounded-xl bg-[#fdf9ee] border border-amber-200/80 dark:border-navy-800 shadow-xs ${className}`}>
         <Image
-          src="/images/logo-oldmangotree.jpg"
+          src={logoSrc}
           alt="Old Mango Tree Emblem"
           width={44}
           height={44}
@@ -77,7 +80,7 @@ export const Logo: React.FC<LogoProps> = ({
       <div className={`flex flex-col items-center text-center gap-2 group ${className}`}>
         <div className="relative w-24 h-24 sm:w-28 sm:h-28 overflow-hidden rounded-2xl bg-[#fdf9ee] border border-amber-200/60 dark:border-navy-800 shadow-sm p-1 transition-transform group-hover:scale-105">
           <Image
-            src="/images/logo-oldmangotree.jpg"
+            src={logoSrc}
             alt="Old Mango Tree"
             fill
             className="object-contain p-1"
@@ -105,7 +108,7 @@ export const Logo: React.FC<LogoProps> = ({
     <div className={`inline-flex items-center gap-2.5 sm:gap-3 group ${className}`}>
       <div className="relative w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 shrink-0 overflow-hidden rounded-xl bg-[#fdf9ee] border border-amber-200/80 dark:border-navy-800 shadow-xs transition-transform group-hover:scale-105">
         <Image
-          src="/images/logo-oldmangotree.jpg"
+          src={logoSrc}
           alt="Old Mango Tree Mark"
           fill
           className="object-contain p-0.5"
